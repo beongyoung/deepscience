@@ -1,4 +1,3 @@
-import Link from "@mui/material/Link";
 import { useState } from "react";
 import {
   Card,
@@ -10,6 +9,7 @@ import {
 } from "@mui/material";
 import styled from "styled-components";
 import PDFViewer from "../../components/PDF/PDFViewer";
+import FileUpload from "../../components/PDF/FileUpload";
 
 const Section = styled.section`
   display: flex;
@@ -66,26 +66,6 @@ const Description = styled(Typography)`
   }
 `;
 
-const StyledLink = styled(Link)`
-  && {
-    display: inline-flex;
-    height: 40px;
-    align-items: center;
-    justify-content: center;
-    border-radius: 4px;
-    background-color: #1a202c;
-    padding: 0 16px;
-    font-size: 14px;
-    font-weight: medium;
-    color: #edf2f7;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-    transition: background-color 0.3s ease;
-    &:hover {
-      background-color: #1a202c;
-    }
-  }
-`;
-
 const HorizontalFlexContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -104,20 +84,26 @@ const HorizontalRule = styled.hr`
   }
 `;
 
-const Grid = styled.div`
-  max-width: 5xl;
-  margin: 0 auto; // Center the grid
-  display: grid;
-  gap: 24px;
-  align-items: center;
-  grid-template-columns: 1fr;
-  @media (min-width: 640px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-`;
+// const Grid = styled.div`
+//   max-width: 5xl;
+//   margin: 0 auto; // Center the grid
+//   display: grid;
+//   gap: 24px;
+//   align-items: center;
+//   grid-template-columns: 1fr;
+//   @media (min-width: 640px) {
+//     grid-template-columns: repeat(2, 1fr);
+//   }
+// `;
 
 const StyledCard = styled(Card)`
   && {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 600px;
     border: 2px solid #4caf50;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -134,13 +120,27 @@ const StyledButton = styled(Button)`
   }
 `;
 
-function Company() {
+const Company = () => {
   const [pdfVisible, setPdfVisible] = useState(false);
-  const pdfPath = "../assets/Sample.pdf";
-  const pdfScale = 1.5;
+  const [selectedPdf, setSelectedPdf] = useState(null);
 
   const handleButtonClick = () => {
     setPdfVisible(true);
+  };
+
+  const handleFileChange = (file) => {
+    setSelectedPdf(file);
+  };
+
+  const getFileName = () => {
+    if (selectedPdf) {
+      return selectedPdf.name;
+    }
+    return "PDF File Name";
+  };
+
+  const getFileDescription = () => {
+    return "PDF File Description";
   };
 
   return (
@@ -154,47 +154,33 @@ function Company() {
             </Description>
           </div>
           <HorizontalFlexContainer>
-            <StyledLink href="#">Upload PDF</StyledLink>
+            <FileUpload onFileChange={handleFileChange} />
           </HorizontalFlexContainer>
         </CenteredContainer>
         <HorizontalRule />
-        <Grid>
-          <StyledCard>
-            <CardHeader title="PDF Title" />
-            <CardContent>
-              <Typography
-                variant="body1"
-                className="text-zinc-500 dark:text-zinc-400"
-              >
-                Description of the PDF file.
-              </Typography>
-            </CardContent>
-            <CardActions>
-              <StyledButton variant="outlined" onClick={handleButtonClick}>
-                View PDF
-              </StyledButton>
-
-              {pdfVisible && <PDFViewer path={pdfPath} scale={pdfScale} />}
-            </CardActions>
-          </StyledCard>
-          <StyledCard>
-            <CardHeader title="PDF Title" />
-            <CardContent>
-              <Typography
-                variant="body1"
-                className="text-zinc-500 dark:text-zinc-400"
-              >
-                Description of the PDF file.
-              </Typography>
-            </CardContent>
-            <CardActions>
-              <StyledButton variant="outlined">View PDF</StyledButton>
-            </CardActions>
-          </StyledCard>
-        </Grid>
+        {pdfVisible &&
+        selectedPdf && (
+          <PDFViewer pdfURL={URL.createObjectURL(selectedPdf)} />
+        ) ? (
+          <PDFViewer pdfURL={URL.createObjectURL(selectedPdf)} />
+        ) : (
+          <>
+            <StyledCard>
+              <CardHeader title={getFileName()} />
+              <CardContent>
+                <Typography>{getFileDescription()}</Typography>
+              </CardContent>
+              <CardActions>
+                <StyledButton variant="outlined" onClick={handleButtonClick}>
+                  View PDF
+                </StyledButton>
+              </CardActions>
+            </StyledCard>
+          </>
+        )}
       </Container>
     </Section>
   );
-}
+};
 
 export default Company;
