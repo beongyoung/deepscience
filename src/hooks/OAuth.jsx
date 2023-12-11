@@ -1,2 +1,2 @@
-const REDIRECT_URI = import.meta.env.VITE_REDIRECT_URL;
-export default REDIRECT_URI;
+const GOOGLE_REDIRECT_URL = import.meta.env.VITE_GOOGLE_REDIRECT_URL;
+export default GOOGLE_REDIRECT_URL;

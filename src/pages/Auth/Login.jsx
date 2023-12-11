@@ -10,7 +10,7 @@ import {
   Checkbox,
 } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
-import REDIRECT_URI from "../../hooks/OAuth";
+import GOOGLE_REDIRECT_URL from "../../hooks/OAuth";
 import googleBtn from "../../assets/signin-assets/Web (mobile + desktop)/png@1x/neutral/web_neutral_sq_SU@1x.png";
 
 function Login() {
@@ -97,7 +97,7 @@ function Login() {
             </Link>
           </Box>
 
-          <a href={REDIRECT_URI} className="googlebtn">
+          <a href={GOOGLE_REDIRECT_URL} className="googlebtn">
             <img src={googleBtn} alt="google 로그인" />
           </a>
         </Stack>
