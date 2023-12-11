@@ -5,17 +5,24 @@ import Home from "./pages/Home/Home.jsx";
 import Info from "./pages/Info/Info.jsx";
 import Login from "./pages/Auth/Login.jsx";
 import Signup from "./pages/Auth/Signup.jsx";
+import Company from "./pages/Company/Company.jsx";
+import News from "./pages/News/News.jsx";
 
 function Router() {
   return (
     <BrowserRouter>
       <NavigationBar />
       <Routes>
-        <Route exact path="/" element={<Home />} />
-        <Route path="/info" element={<Info />} />
         <Route path="*" element={<h1>Not Found</h1>} />
-        <Route path="auth/login" element={<Login />} />
-        <Route path="auth/signup" element={<Signup />} />
+        <Route exact path="/" element={<Home />} />
+        <Route path="/company" element={<Company />} />
+        <Route path="/info" element={<Info />} />
+        <Route path="/news" element={<News />} />
+        <Route path="auth">
+          <Route path="login" element={<Login />} />
+          <Route path="signup" element={<Signup />} />
+          <Route path="google" element={<h1>Google</h1>} />
+        </Route>
       </Routes>
       <Footer />
     </BrowserRouter>
