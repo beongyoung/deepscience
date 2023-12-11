@@ -7,11 +7,15 @@ Card.propTypes = {
 };
 
 const CardContainer = styled.div`
+  display: flex;
   border: 1px solid #ddd;
   border-radius: 8px;
-  padding: 16px;
+  padding: 22px;
   margin: 16px;
-  width: 300px;
+  width: auto;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
 `;
 
 const Title = styled.h2`

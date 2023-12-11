@@ -34,7 +34,7 @@ export default function Feed() {
 
   return (
     <CardContainer>
-      {news.length > 0 ? (
+      {news?.length > 0 ? (
         news.map((article) => (
           <Card
             key={article.id}
