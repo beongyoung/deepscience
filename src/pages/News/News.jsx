@@ -5,25 +5,46 @@ import Card from "../../components/Card/Card";
 
 export default function Feed() {
   const [news, setNews] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     async function getNews() {
-      const newsData = await fetchNews();
-      setNews(newsData);
+      try {
+        const newsData = await fetchNews();
+        setNews(newsData);
+      } catch (error) {
+        console.error("Error fetching news:", error);
+        setError("Error fetching news. Please try again later.");
+      } finally {
+        setLoading(false);
+      }
     }
 
     getNews();
   }, []);
 
+  if (loading) {
+    return <p>Loading...</p>; // or a loading spinner
+  }
+
+  if (error) {
+    return <p>{error}</p>; // or a user-friendly error message
+  }
+
   return (
     <CardContainer>
-      {news?.map((article) => (
-        <Card
-          key={article.id}
-          title={article.title}
-          description={article.description}
-        />
-      ))}
+      {news.length > 0 ? (
+        news.map((article) => (
+          <Card
+            key={article.id}
+            title={article.title}
+            description={article.description}
+          />
+        ))
+      ) : (
+        <p>No news available.</p>
+      )}
     </CardContainer>
   );
 }
