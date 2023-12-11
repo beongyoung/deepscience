@@ -16,16 +16,14 @@ export default function Feed() {
   }, []);
 
   return (
-    <div>
-      <CardContainer>
-        {news.map((article) => (
-          <Card
-            key={article.id}
-            title={article.title}
-            description={article.description}
-          />
-        ))}
-      </CardContainer>
-    </div>
+    <CardContainer>
+      {news?.map((article) => (
+        <Card
+          key={article.id}
+          title={article.title}
+          description={article.description}
+        />
+      ))}
+    </CardContainer>
   );
 }
