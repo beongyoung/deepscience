@@ -13,13 +13,14 @@ export default function Home() {
   `;
   const navigate = useNavigate();
   const menuList = [
-    { title: "클린테크", url: "companies/clean-tech" },
-    { title: "에너지저장 및 서비스", url: "companies/energy" },
-    { title: "자동차/모빌리티", url: "companies/mobility" },
-    { title: "바이오헬스", url: "companies/bio-helth" },
-    { title: "로보틱스", url: "companies/robotics" },
-    { title: "항공/우주", url: "companies/space" },
+    { title: "클린테크", url: "company/clean-tech" },
+    { title: "에너지저장 및 서비스", url: "company/energy" },
+    { title: "자동차/모빌리티", url: "company/mobility" },
+    { title: "바이오헬스", url: "company/bio-health" },
+    { title: "로보틱스", url: "company/robotics" },
+    { title: "항공/우주", url: "company/space" },
   ];
+
   return (
     <Container>
       <Search />

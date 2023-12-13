@@ -16,6 +16,14 @@ function Router() {
         <Route path="*" element={<h1>Not Found</h1>} />
         <Route exact path="/" element={<Home />} />
         <Route path="/company" element={<Company />} />
+        <Route path="company">
+          <Route path="clean-tech" element={<h1>Clean Tech</h1>} />
+          <Route path="energy" element={<h1>Energy</h1>} />
+          <Route path="mobility" element={<h1>Mobility</h1>} />
+          <Route path="bio-health" element={<h1>Bio Health</h1>} />
+          <Route path="robotics" element={<h1>Robotics</h1>} />
+          <Route path="space" element={<h1>Space</h1>} />
+        </Route>
         <Route path="/info" element={<Info />} />
         <Route path="/news" element={<News />} />
         <Route path="auth">

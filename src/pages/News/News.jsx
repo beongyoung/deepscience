@@ -40,6 +40,10 @@ export default function Feed() {
             key={article.id}
             title={article.title}
             description={article.description}
+            url={article.url}
+            urlToImage={article.urlToImage}
+            publishedAt={article.publishedAt}
+            author={article.author}
           />
         ))
       ) : (

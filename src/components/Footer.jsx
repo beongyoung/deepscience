@@ -21,7 +21,7 @@ const FooterTextBox = styles.div`
 const FooterBox = styles.div`
 	width: 100%;
 	display: flex;
-	justify-content: space-between;
+	justify-content: space-evenly;
 	align-items: center;
 	color: white;
 `;
