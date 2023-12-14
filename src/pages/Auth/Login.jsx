@@ -10,7 +10,8 @@ import {
   Checkbox,
 } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
-import GOOGLE_REDIRECT_URL from "../../hooks/OAuth";
+import OAuth from "../../hooks/OAuth";
+import axios from "axios";
 import googleBtn from "../../assets/signin-assets/Web (mobile + desktop)/png@1x/neutral/web_neutral_sq_SU@1x.png";
 
 function Login() {
@@ -29,6 +30,21 @@ function Login() {
     // 아이디 저장 관리
     // rememberId ? 쿠키 없애기 : 만들기
     navigate("/");
+  };
+
+  const GOOGLE_REDIRECT_URL = OAuth().GOOGLE_REDIRECT_URL;
+
+  const handleGoogleBtnClick = async () => {
+    console.log("handleGoogleBtnClick");
+    try {
+      const response = await axios.get(GOOGLE_REDIRECT_URL);
+      console.log(response);
+      if (response.status === 200) {
+        navigate("/");
+      }
+    } catch (error) {
+      console.error("Error:", error.response);
+    }
   };
 
   return (
@@ -100,6 +116,10 @@ function Login() {
           <a href={GOOGLE_REDIRECT_URL} className="googlebtn">
             <img src={googleBtn} alt="google 로그인" />
           </a>
+
+          <Button variant="contained" fullWidth onClick={handleGoogleBtnClick}>
+            구글 로그인
+          </Button>
         </Stack>
       </Box>
     </Container>
