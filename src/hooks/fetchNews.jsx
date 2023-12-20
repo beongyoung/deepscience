@@ -1,9 +1,10 @@
 const NEWS_API_KEY = import.meta.env.VITE_NEWS_API_KEY;
+const proxyUrl = "https://cors-anywhere.herokuapp.com/";
 
 export async function fetchNews() {
   try {
     const response = await fetch(
-      `https://newsapi.org/v2/top-headlines?country=kr&category=technology&apiKey=${NEWS_API_KEY}`
+      `${proxyUrl}https://newsapi.org/v2/top-headlines?country=kr&category=technology&apiKey=${NEWS_API_KEY}`
     );
 
     if (!response.ok) {
