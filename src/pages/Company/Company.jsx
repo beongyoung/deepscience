@@ -10,6 +10,7 @@ import {
 import styled from "styled-components";
 import PDFViewer from "../../components/PDF/PDFViewer";
 import FileUpload from "../../components/PDF/FileUpload";
+import Dart from "../../hooks/fetchDart";
 
 const Section = styled.section`
   display: flex;
@@ -145,6 +146,7 @@ const Company = () => {
 
   return (
     <Section>
+      <Dart />
       <Container>
         <CenteredContainer>
           <div>
