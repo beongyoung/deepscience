@@ -12,9 +12,6 @@ export async function fetchNews() {
           category: "technology",
           apiKey: NEWS_API_KEY,
         },
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-        },
       }
     );
 
