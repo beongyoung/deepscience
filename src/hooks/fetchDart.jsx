@@ -6,7 +6,12 @@ const crtfc_key = import.meta.env.VITE_DART_SECRET_KEY;
 async function fetchDart() {
   try {
     const response = await axios.get(
-      `https://opendart.fss.or.kr/api/company.json?crtfc_key=${crtfc_key}&corp_code=00126380`
+      `https://opendart.fss.or.kr/api/company.json?crtfc_key=${crtfc_key}&corp_code=00126380`,
+      {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        },
+      }
     );
 
     // Axios automatically throws an error for non-2xx responses
