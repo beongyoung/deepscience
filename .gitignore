@@ -39,4 +39,4 @@ psd
 thumb
 sketch
 .env
-yarn.lock
+yarn.*
