@@ -37,7 +37,9 @@ function Login() {
   const handleGoogleBtnClick = async () => {
     console.log("handleGoogleBtnClick");
     try {
-      const response = await axios.get(GOOGLE_REDIRECT_URL);
+      const response = await axios.post(GOOGLE_REDIRECT_URL, {
+        headers: "X-AUTH-TOKEN",
+      });
       console.log(response);
       if (response.status === 200) {
         navigate("/");

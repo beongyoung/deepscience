@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const CardContainer = styled.div`
-  display: grid;
+  display: inline-block;
   justify-content: center;
   justify-items: center;
   list-style: none;
