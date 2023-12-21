@@ -166,19 +166,17 @@ const Company = () => {
         ) ? (
           <PDFViewer pdfURL={URL.createObjectURL(selectedPdf)} />
         ) : (
-          <>
-            <StyledCard>
-              <CardHeader title={getFileName()} />
-              <CardContent>
-                <Typography>{getFileDescription()}</Typography>
-              </CardContent>
-              <CardActions>
-                <StyledButton variant="outlined" onClick={handleButtonClick}>
-                  View PDF
-                </StyledButton>
-              </CardActions>
-            </StyledCard>
-          </>
+          <StyledCard>
+            <CardHeader title={getFileName()} />
+            <CardContent>
+              <Typography>{getFileDescription()}</Typography>
+            </CardContent>
+            <CardActions>
+              <StyledButton variant="outlined" onClick={handleButtonClick}>
+                View PDF
+              </StyledButton>
+            </CardActions>
+          </StyledCard>
         )}
       </Container>
     </Section>

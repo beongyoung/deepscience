@@ -1,15 +1,16 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const crtfc_key = import.meta.env.VITE_DART_SECRET_KEY;
-
+const SecretKey = import.meta.env.VITE_DART_SECRET_KEY;
+// const corsProxyUrl = "https://cors-anywhere.herokuapp.com/";
 async function fetchDart() {
   try {
     const response = await axios.get(
-      `https://opendart.fss.or.kr/api/company.json?crtfc_key=${crtfc_key}&corp_code=00126380`,
+      "https://opendart.fss.or.kr/api/company.json",
       {
-        headers: {
-          "Access-Control-Allow-Origin": "*",
+        params: {
+          crtfc_key: SecretKey,
+          corp_code: "00126380",
         },
       }
     );
