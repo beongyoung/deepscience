@@ -2,7 +2,7 @@ import axios from "axios";
 
 const authToken = import.meta.env.VITE_SUCCESS_TOKEN;
 
-async function fetchGetComapny(category) {
+async function fetchGetCompany(category) {
   if (category === null) {
     console.log(category);
     category = "CLEAN_TECH";
@@ -19,7 +19,6 @@ async function fetchGetComapny(category) {
         },
       }
     );
-    // console.log(response.data);
     return response.data;
   } catch (error) {
     console.log(error.response);
@@ -27,4 +26,4 @@ async function fetchGetComapny(category) {
   }
 }
 
-export default fetchGetComapny;
+export default fetchGetCompany;

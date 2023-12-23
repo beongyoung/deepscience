@@ -1,6 +1,6 @@
 import { useMemo, useState, useEffect } from "react";
 import styled from "styled-components";
-import fetchGetApi from "../../hooks/fetch/fetchGetCompany.jsx";
+import fetchGetCompany from "../../hooks/fetch/fetchGetCompany.jsx";
 import { useParams, useNavigate } from "react-router-dom";
 
 const Wrapper = styled.div`
@@ -48,7 +48,7 @@ export default function CompanyDetail() {
   useEffect(() => {
     const fetchData = async (category) => {
       try {
-        const data = await fetchGetApi(category);
+        const data = await fetchGetCompany(category);
         setCompanyData(data);
         console.log(data);
       } catch (error) {
