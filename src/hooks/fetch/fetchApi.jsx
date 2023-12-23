@@ -8,9 +8,9 @@ const fetchData = async () => {
       "http://api.updatecome.com:8081/v1/companies",
       {
         name: "string",
-        category: "CLEAN_TECH",
+        category: "ROBOTICS",
         description: "string",
-        stockCode: 0,
+        stockCode: 4,
       },
       {
         headers: {

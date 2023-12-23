@@ -1,3 +1,17 @@
 {
-  "rewrites": [{ "source": "/(.*)", "destination": "/" }]
+  "rewrites": [
+    {
+      "source": "/v1/:path*",
+      "destination": "http://api.updatecome.com:8081/:path*"
+    },
+    {
+      "source": "https://opendart.fss.or.kr/api/:path*",
+      "destination": "https://opendart.fss.or.kr/api/company.json"
+    },
+    {
+      "source": "https://newsapi.org/v2/top-headlines/:path*",
+      "destination": "https://newsapi.org/v2/top-headlines"
+    },
+    { "source": "/(.*)", "destination": "/" }
+  ]
 }

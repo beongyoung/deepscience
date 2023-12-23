@@ -7,6 +7,7 @@ import Login from "./pages/Auth/Login.jsx";
 import Signup from "./pages/Auth/Signup.jsx";
 import Company from "./pages/Company/Company.jsx";
 import News from "./pages/News/News.jsx";
+import CompanyDetail from "./pages/Company/CompanyDetail.jsx";
 import GoogleOAuth from "./pages/Auth/GoogleOAuth.jsx";
 import Test from "./pages/Test/Test.jsx";
 
@@ -19,12 +20,7 @@ function Router() {
         <Route exact path="/" element={<Home />} />
         <Route path="/company" element={<Company />} />
         <Route path="company">
-          <Route path="clean-tech" element={<h1>Clean Tech</h1>} />
-          <Route path="energy" element={<h1>Energy</h1>} />
-          <Route path="mobility" element={<h1>Mobility</h1>} />
-          <Route path="bio-health" element={<h1>Bio Health</h1>} />
-          <Route path="robotics" element={<h1>Robotics</h1>} />
-          <Route path="space" element={<h1>Space</h1>} />
+          <Route path="/company/:id" element={<CompanyDetail />} />
         </Route>
         <Route path="/info" element={<Info />} />
         <Route path="/news" element={<News />} />
