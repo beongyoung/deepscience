@@ -1,3 +1,9 @@
 {
-  "rewrites": [{ "source": "/(.*)", "destination": "/" }]
+  "rewrites": [
+    {
+      "source": "/v1/:path*",
+      "destination": "http://api.updatecome.com:8081/:path*"
+    },
+    { "source": "/(.*)", "destination": "/" }
+  ]
 }

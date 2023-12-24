@@ -1,10 +1,7 @@
 import styled from "styled-components";
 
 const CardContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  align-content: center;
+  display: inline-block;
   justify-content: center;
   justify-items: center;
   list-style: none;
