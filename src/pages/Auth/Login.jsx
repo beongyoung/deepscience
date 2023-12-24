@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import OAuth from "../../hooks/OAuth";
-import axios from "axios";
+// import axios from "axios";
 import googleBtn from "../../assets/signin-assets/Web (mobile + desktop)/png@1x/neutral/web_neutral_sq_SU@1x.png";
 
 function Login() {
@@ -34,20 +34,20 @@ function Login() {
 
   const GOOGLE_REDIRECT_URL = OAuth().GOOGLE_REDIRECT_URL;
 
-  const handleGoogleBtnClick = async () => {
-    console.log("handleGoogleBtnClick");
-    try {
-      const response = await axios.post(GOOGLE_REDIRECT_URL, {
-        headers: "X-AUTH-TOKEN",
-      });
-      console.log(response);
-      if (response.status === 200) {
-        navigate("/");
-      }
-    } catch (error) {
-      console.error("Error:", error.response);
-    }
-  };
+  // const handleGoogleBtnClick = async () => {
+  //   console.log("handleGoogleBtnClick");
+  //   try {
+  //     const response = await axios.post(GOOGLE_REDIRECT_URL, {
+  //       headers: "X-AUTH-TOKEN",
+  //     });
+  //     console.log(response);
+  //     if (response.status === 200) {
+  //       navigate("/");
+  //     }
+  //   } catch (error) {
+  //     console.error("Error:", error.response);
+  //   }
+  // };
 
   return (
     <Container>
@@ -119,9 +119,9 @@ function Login() {
             <img src={googleBtn} alt="google 로그인" />
           </a>
 
-          <Button variant="contained" fullWidth onClick={handleGoogleBtnClick}>
+          {/* <Button variant="contained" fullWidth onClick={handleGoogleBtnClick}>
             구글 로그인
-          </Button>
+          </Button> */}
         </Stack>
       </Box>
     </Container>

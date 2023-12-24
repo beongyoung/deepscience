@@ -8,7 +8,7 @@ import {
   Stack,
 } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios"; // Import Axios
+import axios from "axios";
 
 function SignUpPage() {
   const [id, setId] = useState("");
@@ -17,7 +17,7 @@ function SignUpPage() {
   const navigate = useNavigate();
 
   const onSignUpClick = async (e) => {
-    e.preventDefault(); // Prevent the default form submission
+    e.preventDefault();
 
     if (password !== confirmPassword) {
       alert("비밀번호가 일치하지 않습니다.");
@@ -27,16 +27,13 @@ function SignUpPage() {
     }
 
     try {
-      // Use Axios to make a POST request
-      const response = await axios.post("localhost:0880", {
+      const response = await axios.post("/v1/user", {
         userId: id,
         password: password,
       });
 
-      // Handle the response data, e.g., show a message based on success or failure
       console.log(response.data);
 
-      // Redirect the user upon successful signup
       if (response.status === 200) {
         navigate("/");
       }
