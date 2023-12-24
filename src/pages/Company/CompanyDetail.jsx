@@ -36,6 +36,7 @@ const CompanyCard = styled.div`
   gap: 8px;
   align-content: center;
   justify-content: space-evenly;
+  cursor: pointer;
 `;
 
 export default function CompanyDetail() {
@@ -49,8 +50,7 @@ export default function CompanyDetail() {
     const fetchData = async (category) => {
       try {
         const data = await fetchGetCompany(category);
-        setCompanyData(data);
-        console.log(data);
+        setCompanyData(data.data);
       } catch (error) {
         console.error(error);
       }
@@ -73,6 +73,20 @@ export default function CompanyDetail() {
     []
   );
 
+  const translation = {
+    CLEAN_TECH: "청정기술",
+    ENERGY: "에너지",
+    MOBILITY: "모빌리티",
+    BIO_HEALTH: "바이오 헬스케어",
+    ROBOTICS: "로봇",
+    AEORSPACE: "항공우주",
+  };
+
+  const handleCompanyClick = (companyId) => {
+    console.log(`Company ID clicked: ${companyId}`);
+    navigate(`/company/detail/${companyId}`);
+  };
+
   const handleSelectChange = (event) => {
     const category = event.target.value;
     setSelectedCategory(category);
@@ -87,7 +101,7 @@ export default function CompanyDetail() {
       <Select onChange={handleSelectChange} value={selectedCategory}>
         {categories.map((category) => (
           <option key={category} value={category}>
-            {category}
+            {translation[category]}
           </option>
         ))}
       </Select>
@@ -96,8 +110,11 @@ export default function CompanyDetail() {
         <p>정보가 존재하지 않습니다</p>
       ) : (
         <CompanyList>
-          {companyData?.data?.map((company) => (
-            <CompanyCard key={company.id}>
+          {companyData?.map((company) => (
+            <CompanyCard
+              key={company.id}
+              onClick={() => handleCompanyClick(company.id)}
+            >
               <h3>{company.name}</h3>
               <p>Description: {company.description}</p>
               <p>Stock Code: {company.stockCode}</p>

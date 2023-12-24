@@ -37,7 +37,7 @@ export default function Feed() {
       {news?.length > 0 ? (
         news.map((article) => (
           <Card
-            key={article.id}
+            key={article.url}
             title={article.title}
             description={article.description}
             url={article.url}

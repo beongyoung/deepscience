@@ -4,13 +4,14 @@ import Search from "../../components/Search";
 import { useNavigate } from "react-router-dom";
 import CleanTech from "../../assets/clean_tech.jpeg";
 
+const StyledGridItem = styled(Grid)`
+  button {
+    font-size: x-large;
+    font-weight: bolder;
+  }
+`;
+
 export default function Home() {
-  const StyledGridItem = styled(Grid)`
-    button {
-      font-size: x-large;
-      font-weight: bolder;
-    }
-  `;
   const navigate = useNavigate();
   const menuList = [
     { title: "클린테크", category: "clean_tech" },
