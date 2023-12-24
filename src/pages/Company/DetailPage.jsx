@@ -36,7 +36,6 @@ const CompanyDetail = () => {
       try {
         const data = await fetchGetCompanyDetail(id);
         setCompanyDetail(data.data);
-        console.log(data.data);
       } catch (error) {
         console.error("Error fetching company details:", error);
       }
