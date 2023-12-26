@@ -4,7 +4,7 @@ const authToken = import.meta.env.VITE_SUCCESS_TOKEN;
 
 async function fetchGetCompany(category = "CLEAN_TECH") {
   try {
-    const response = await axios.get("/v1/companies", {
+    const response = await axios.get(`/v1/companies`, {
       params: {
         category: category,
       },

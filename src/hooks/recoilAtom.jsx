@@ -1,11 +1,18 @@
 import { atom } from "recoil";
 
-export const termsAgreedState = atom({
-  key: "termsAgreedState",
+export const allAgreedState = atom({
+  key: "allAgreedState",
   default: false,
 });
 
-export const userInfoState = atom({
-  key: "userInfoState",
-  default: {},
+export const agreementsState = atom({
+  key: "agreementsState",
+  default: {
+    termsAgreed: false,
+    personalInfoAgreed: false,
+    provisionAgreed: false,
+    locationAgreed: false,
+    eventAlarmAgreed: false,
+    serviceAlarmAgreed: false,
+  },
 });

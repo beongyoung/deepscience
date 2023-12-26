@@ -4,7 +4,7 @@ const authToken = import.meta.env.VITE_SUCCESS_TOKEN;
 
 async function fetchGetUser() {
   try {
-    const response = await axios.get("/v1/user", {
+    const response = await axios.get(`/v1/user`, {
       headers: {
         "X-AUTH-TOKEN": authToken,
       },

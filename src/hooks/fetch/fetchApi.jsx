@@ -5,7 +5,7 @@ const authToken = import.meta.env.VITE_SUCCESS_TOKEN;
 const fetchData = async () => {
   try {
     const response = await axios.post(
-      "/v1/companies",
+      `/v1/companies`,
       {
         name: "string",
         category: "ROBOTICS",

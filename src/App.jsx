@@ -10,7 +10,6 @@ import News from "./pages/News/News.jsx";
 import CompanyDetail from "./pages/Company/CompanyDetail.jsx";
 import GoogleOAuth from "./pages/Auth/GoogleOAuth.jsx";
 import DetailPage from "./pages/Company/DetailPage.jsx";
-import SignUpPage from "./pages/Auth/SignUpPage.jsx";
 import Test from "./pages/Test/Test.jsx";
 
 function Router() {
@@ -30,7 +29,6 @@ function Router() {
         <Route path="auth">
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<Signup />} />
-          <Route path="signuppage" element={<SignUpPage />} />
           <Route path="google" element={<GoogleOAuth />} />
         </Route>
         <Route path="/test" element={<Test />} />

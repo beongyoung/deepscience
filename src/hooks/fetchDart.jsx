@@ -2,18 +2,16 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 const SecretKey = import.meta.env.VITE_DART_SECRET_KEY;
-// const corsProxyUrl = "https://cors-anywhere.herokuapp.com/";
+
 async function fetchDart() {
   try {
-    const response = await axios.get(
-      "https://opendart.fss.or.kr/api/company.json",
-      {
-        params: {
-          crtfc_key: SecretKey,
-          corp_code: "00126380",
-        },
-      }
-    );
+    const response = await axios.get(`/api/company.json`, {
+      params: {
+        crtfc_key: SecretKey,
+        corp_code: "00126380",
+      },
+      withCredentials: true,
+    });
 
     // Axios automatically throws an error for non-2xx responses
     const data = response.data;
