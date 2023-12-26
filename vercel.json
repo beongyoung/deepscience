@@ -1,32 +1,21 @@
 {
   "version": 2,
-  "routes": [
+  "rewrites": [
     {
-      "src": "/v1/(.*)",
-      "dest": "http://api.updatecome.com:8081/",
-      "methods": ["GET", "POST", "PUT", "DELETE"],
-      "headers": {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "GET"
-      }
+      "source": "/v1/:path*",
+      "destination": "http://api.updatecome.com:8081/:path*"
     },
     {
-      "src": "/api/(.*)",
-      "dest": "https://opendart.fss.or.kr/",
-      "methods": ["GET"],
-      "headers": {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "GET"
-      }
+      "source": "/api/:path*",
+      "destination": "https://opendart.fss.or.kr/:path*"
     },
     {
-      "src": "/v2/(.*)",
-      "dest": "https://newsapi.org/",
-      "methods": ["GET"],
-      "headers": {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "GET"
-      }
+      "source": "/v2/(.*)",
+      "destination": "https://newsapi.org/:path*"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/"
     }
   ]
 }
