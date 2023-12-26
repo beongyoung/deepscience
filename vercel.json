@@ -6,7 +6,7 @@
     },
     {
       "source": "/v2/:path*",
-      "destination": "http://api.updatecome.com:8082/:path*"
+      "destination": "https://newsapi.org/:path*"
     },
     {
       "source": "/api/:path*",
