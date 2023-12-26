@@ -5,6 +5,6 @@
     { "src": "/v1/[^.]+", "dest": "https://api.updatecome.com:8081" },
     { "src": "/v2/[^.]+", "dest": "https://newsapi.org" },
     { "src": "/api", "dest": "https://opendart.fss.or.kr" },
-    { "src": "/[^.]+", "dest": "/" }
+    { "src": "/[^.]+", "dest": "/", "status": 200 }
   ]
 }
