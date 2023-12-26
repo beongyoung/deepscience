@@ -1,3 +1,20 @@
 {
+  "routes": [
+    {
+      "src": "/v1(/.*)",
+      "dest": "http://api.updatecome.com:8081/",
+      "methods": ["GET", "POST", "PUT", "DELETE"]
+    },
+    {
+      "src": "/api(/.*)",
+      "dest": "https://opendart.fss.or.kr/",
+      "methods": ["GET", "POST", "PUT", "DELETE"]
+    },
+    {
+      "src": "/v2(/.*)",
+      "dest": "https://newsapi.org/",
+      "methods": ["GET", "POST", "PUT", "DELETE"]
+    }
+  ],
   "rewrites": [{ "source": "/(.*)", "destination": "/" }]
 }
