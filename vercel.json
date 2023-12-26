@@ -4,11 +4,19 @@
       "source": "/v1/:path*",
       "destination": "http://api.updatecome.com:8081/:path*"
     },
+    {
+      "source": "/v2/:path*",
+      "destination": "http://api.updatecome.com:8082/:path*"
+    },
+    {
+      "source": "/api/:path*",
+      "destination": "https://opendart.fss.or.kr/:path*"
+    },
     { "source": "/(.*)", "destination": "/" }
   ],
   "headers": [
     {
-      "source": "(.*)",
+      "source": ["/api/(.*)", "/v1/(.*)", "/v2/(.*)"],
       "headers": [
         { "key": "Access-Control-Allow-Credentials", "value": "true" },
         { "key": "Access-Control-Allow-Origin", "value": "*" },

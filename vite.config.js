@@ -22,6 +22,13 @@ export default defineConfig({
         ws: true,
         cors: true,
       },
+      "/v2": {
+        target: "https://newsapi.org/",
+        changeOrigin: true,
+        secure: false,
+        ws: true,
+        cors: true,
+      },
     },
   },
 });
