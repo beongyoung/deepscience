@@ -2,6 +2,7 @@
   "version": 2,
   "routes": [
     { "handle": "filesystem" },
+    { "src": "/[^.]+", "dest": "/", "status": 200 },
     { "src": "/v2/top-headlines", "dest": "https://newsapi.org" },
     { "src": "/v1/(.*)", "dest": "https://api.updatecome.com:8081" },
     { "src": "/api/(.*)", "dest": "https://opendart.fss.or.kr" }
