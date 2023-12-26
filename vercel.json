@@ -1,23 +1,9 @@
 {
-  "version": 1,
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/"
-    }
-  ],
-  "proxy": [
-    {
-      "source": "/v2/top-headlines",
-      "destination": "https://newsapi.org"
-    },
-    {
-      "source": "/v1/(.*)",
-      "destination": "https://api.updatecome.com:8081"
-    },
-    {
-      "source": "/api/(.*)",
-      "destination": "https://opendart.fss.or.kr"
-    }
+  "version": 2,
+  "routes": [
+    { "handle": "filesystem" },
+    { "src": "/v2/top-headlines", "dest": "https://newsapi.org" },
+    { "src": "/v1/(.*)", "dest": "https://api.updatecome.com:8081" },
+    { "src": "/api/(.*)", "dest": "https://opendart.fss.or.kr" }
   ]
 }
