@@ -2,9 +2,9 @@
   "version": 2,
   "routes": [
     { "handle": "filesystem" },
-    { "src": "/(.*)", "dest": "/" },
-    { "src": "/v2/(.*)", "dest": "https://newsapi.org/:path" },
-    { "src": "/v1/(.*)", "dest": "https://api.updatecome.com:8081" },
-    { "src": "/api/(.*)", "dest": "https://opendart.fss.or.kr" }
+    { "src": "/v1/[^.]+", "dest": "https://api.updatecome.com:8081" },
+    { "src": "/v2/[^.]+", "dest": "https://newsapi.org" },
+    { "src": "/api/[^.]+", "dest": "https://opendart.fss.or.kr" },
+    { "src": "/[^.]+", "dest": "/" }
   ]
 }
