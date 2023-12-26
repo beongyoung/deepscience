@@ -11,6 +11,7 @@ export async function fetchNews() {
         category: "technology",
         apiKey: NEWS_API_KEY,
       },
+      withCredentials: true,
     });
 
     if (response.status !== 200) {

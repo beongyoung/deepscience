@@ -11,6 +11,7 @@ async function fetchDart() {
         crtfc_key: SecretKey,
         corp_code: "00126380",
       },
+      withCredentials: true,
     });
 
     // Axios automatically throws an error for non-2xx responses
