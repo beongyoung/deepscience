@@ -2,18 +2,6 @@
   "version": 2,
   "rewrites": [
     {
-      "source": "/v1/:path*",
-      "destination": "http://api.updatecome.com:8081/:path*"
-    },
-    {
-      "source": "/api/:path*",
-      "destination": "https://opendart.fss.or.kr/:path*"
-    },
-    {
-      "source": "/v2/:path*",
-      "destination": "https://newsapi.org/:path*"
-    },
-    {
       "source": "/(.*)",
       "destination": "/"
     }
