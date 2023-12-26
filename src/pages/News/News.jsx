@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { fetchNews } from "../../hooks/fetchNews";
+import { fetchNews } from "../../hooks/fetch/fetchNews";
 import CardContainer from "../../components/Card/CardContainer";
 import Card from "../../components/Card/Card";
 
