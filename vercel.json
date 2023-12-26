@@ -10,7 +10,7 @@
       "destination": "https://opendart.fss.or.kr/:path*"
     },
     {
-      "source": "/v2/(.*)",
+      "source": "/v2/:path*",
       "destination": "https://newsapi.org/:path*"
     },
     {
