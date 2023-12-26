@@ -1,15 +1,23 @@
 {
-  "version": 2,
+  "version": 1,
   "rewrites": [
     {
       "source": "/(.*)",
       "destination": "/"
     }
   ],
-  "headers": [
+  "proxy": [
     {
-      "source": "/(.*)",
-      "headers": ["Access-Control-Allow-Origin: https://deepscience.vercel.app"]
+      "source": "/v2/top-headlines",
+      "destination": "https://newsapi.org"
+    },
+    {
+      "source": "/v1/(.*)",
+      "destination": "https://api.updatecome.com:8081"
+    },
+    {
+      "source": "/api/(.*)",
+      "destination": "https://opendart.fss.or.kr"
     }
   ]
 }

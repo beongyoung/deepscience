@@ -1,11 +1,10 @@
 import axios from "axios";
 
 const authToken = import.meta.env.VITE_SUCCESS_TOKEN;
-const serverUrl = import.meta.env.VITE_SERVER_URL;
 
 async function fetchGetUser() {
   try {
-    const response = await axios.get(`${serverUrl}v1/user`, {
+    const response = await axios.get(`/v1/user`, {
       headers: {
         "X-AUTH-TOKEN": authToken,
       },

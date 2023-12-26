@@ -1,11 +1,10 @@
 import axios from "axios";
 
 const authToken = import.meta.env.VITE_SUCCESS_TOKEN;
-const serverUrl = import.meta.env.VITE_SERVER_URL;
 
 async function fetchGetCompanyDetail(id = 1) {
   try {
-    const response = await axios.get(`${serverUrl}v1/companies/${id}`, {
+    const response = await axios.get(`/v1/companies/${id}`, {
       headers: {
         "X-AUTH-TOKEN": authToken,
       },
