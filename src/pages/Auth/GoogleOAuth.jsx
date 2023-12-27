@@ -11,17 +11,18 @@ function GoogleOAuth() {
   const Navigate = useNavigate();
 
   useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    const code = params.get("token");
-
     const fetchData = async () => {
       try {
+        const params = new URLSearchParams(location.search);
+        const code = params.get("token");
+
         if (code) {
           const user = await fetchGetUser(code);
           dispatch(setAuthCode(code));
 
           if (user) {
             dispatch(setAuthUser(user));
+            localStorage.setItem("authUser", JSON.stringify(user));
             Navigate("/");
             alert(`${user.data.name}님 환영합니다!`);
           }
@@ -34,7 +35,11 @@ function GoogleOAuth() {
     fetchData();
   }, [dispatch, location.search, Navigate]);
 
-  return <Home />;
+  return (
+    <div>
+      <Home />
+    </div>
+  );
 }
 
 export default GoogleOAuth;

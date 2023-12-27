@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import styles from "styled-components";
 import logo from "../assets/logo.png";
@@ -52,16 +51,10 @@ const LoginWrapper = styles.div`
 
 function NavigationBar() {
   const dispatch = useDispatch();
-  const [storedAuthUser, setStoredAuthUser] = useState(
-    localStorage.getItem("authUser")
-  );
-
-  useEffect(() => {
-    setStoredAuthUser(localStorage.getItem("authUser"));
-  }, [storedAuthUser]);
+  const authUser = JSON.parse(localStorage.getItem("authUser"));
 
   function handleLogout() {
-    if (storedAuthUser) {
+    if (authUser) {
       dispatch(logoutUser());
       alert("로그아웃 되었습니다.");
       window.location.reload();
@@ -88,9 +81,9 @@ function NavigationBar() {
         <Link to="/support">
           <NavItem>지원</NavItem>
         </Link>
-        {storedAuthUser ? (
+        {authUser ? (
           <LoginWrapper>
-            <span>{JSON.parse(storedAuthUser).data.name}님</span>
+            <span>{authUser.data.name}님</span>
             <button onClick={handleLogout}>로그아웃</button>
           </LoginWrapper>
         ) : (

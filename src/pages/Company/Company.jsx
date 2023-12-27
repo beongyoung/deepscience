@@ -85,18 +85,6 @@ const HorizontalRule = styled.hr`
   }
 `;
 
-// const Grid = styled.div`
-//   max-width: 5xl;
-//   margin: 0 auto; // Center the grid
-//   display: grid;
-//   gap: 24px;
-//   align-items: center;
-//   grid-template-columns: 1fr;
-//   @media (min-width: 640px) {
-//     grid-template-columns: repeat(2, 1fr);
-//   }
-// `;
-
 const StyledCard = styled(Card)`
   && {
     display: flex;

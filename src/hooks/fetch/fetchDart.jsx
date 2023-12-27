@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const SecretKey = import.meta.env.VITE_DART_SECRET_KEY;
+const secretKey = import.meta.env.VITE_DART_SECRET_KEY;
 
 async function fetchDart() {
   try {
     const response = await axios.get(`/api/company.json`, {
       params: {
-        crtfc_key: SecretKey,
+        crtfc_key: secretKey,
         corp_code: "00126380",
       },
       withCredentials: true,
