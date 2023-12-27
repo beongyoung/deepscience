@@ -61,7 +61,7 @@ function NavigationBar() {
   useEffect(() => {
     try {
       console.log("Auth user in useEffect:", authUser);
-      if (authUser?.data) {
+      if (authUser?.data && !showWelcomeAlert) {
         console.log("Showing welcome toast for:", authUser.data.name);
         setShowWelcomeAlert(true);
         toast.info(`${authUser.data.name}님 환영합니다!`);
