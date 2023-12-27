@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styles from "styled-components";
 import logo from "../assets/logo.png";
 import { ToastContainer, toast } from "react-toastify";
@@ -55,8 +55,7 @@ const LoginWrapper = styles.div`
 function NavigationBar() {
   const dispatch = useDispatch();
   const [showWelcomeAlert, setShowWelcomeAlert] = useState(false);
-  const authUserString = localStorage.getItem("authUser");
-  const authUser = authUserString ? JSON.parse(authUserString) : null;
+  const authUser = useSelector((state) => state.auth.authUser);
 
   useEffect(() => {
     try {
