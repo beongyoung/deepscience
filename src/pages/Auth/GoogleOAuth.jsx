@@ -11,7 +11,7 @@ function GoogleOAuth() {
   const Navigate = useNavigate();
 
   useEffect(() => {
-    const fetchData = async () => {
+    async function fetchData() {
       try {
         const params = new URLSearchParams(location.search);
         const code = params.get("token");
@@ -30,7 +30,7 @@ function GoogleOAuth() {
       } catch (error) {
         console.error("Error fetching user data:", error);
       }
-    };
+    }
 
     fetchData();
   }, [dispatch, location.search, Navigate]);
