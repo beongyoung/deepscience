@@ -87,7 +87,7 @@ function NavigationBar() {
         <Link to="/support">
           <NavItem>지원</NavItem>
         </Link>
-        {storedAuthUser ? (
+        {storedAuthUser !== null ? (
           <LoginWrapper>
             <span>{JSON.parse(storedAuthUser).data.name}님</span>
             <button onClick={handleLogout}>로그아웃</button>
