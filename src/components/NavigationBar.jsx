@@ -60,7 +60,6 @@ function NavigationBar() {
 
   useEffect(() => {
     try {
-      window.location.reload();
       if (authUser?.data && !showWelcomeAlert) {
         setShowWelcomeAlert(true);
         toast.info(`${authUser.data.name}님 환영합니다!`);
