@@ -14,10 +14,7 @@ export const setAuthUser = (user) => {
   };
 };
 
-export const logoutUser = () => {
-  localStorage.clear();
-  return {
-    type: "LOGOUT_USER",
-    payload: null,
-  };
-};
+export const logoutUser = () => ({
+  localStorage: localStorage.clear(),
+  type: "LOGOUT_USER",
+});
