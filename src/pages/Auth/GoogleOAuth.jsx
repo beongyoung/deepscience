@@ -25,7 +25,6 @@ async function GoogleOAuth() {
             localStorage.setItem("authUser", JSON.stringify(user));
             Navigate("/");
             alert(`${user.data.name}님 환영합니다!`);
-            window.location.reload();
           }
         }
       } catch (error) {
