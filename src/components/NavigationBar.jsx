@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import styles from "styled-components";
@@ -51,7 +52,16 @@ const LoginWrapper = styles.div`
 
 function NavigationBar() {
   const dispatch = useDispatch();
+  const [showWelcomeAlert, setShowWelcomeAlert] = useState(true);
   const authUser = JSON.parse(localStorage.getItem("authUser"));
+
+  useEffect(() => {
+    if (authUser) {
+      alert(`${authUser.data.name}님 환영합니다!`);
+      window.location.reload();
+      setShowWelcomeAlert(false);
+    }
+  }, [authUser, showWelcomeAlert]);
 
   function handleLogout() {
     if (authUser) {
