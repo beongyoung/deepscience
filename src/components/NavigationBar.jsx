@@ -58,7 +58,7 @@ function NavigationBar() {
 
   useEffect(() => {
     try {
-      if (authUser && authUser.data) {
+      if (authUser?.data && !showWelcomeAlert) {
         alert(`${authUser.data.name}님 환영합니다!`);
         setShowWelcomeAlert(true);
       }
@@ -99,7 +99,7 @@ function NavigationBar() {
         <Link to="/support">
           <NavItem>지원</NavItem>
         </Link>
-        {authUser ? (
+        {authUser && !showWelcomeAlert ? (
           <LoginWrapper>
             <span>{authUser.data.name}님</span>
             <button onClick={handleLogout}>로그아웃</button>
