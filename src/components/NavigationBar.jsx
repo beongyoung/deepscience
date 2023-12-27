@@ -60,14 +60,21 @@ function NavigationBar() {
 
   useEffect(() => {
     try {
-      if (authUser?.data && !showWelcomeAlert) {
+      if (authUser?.data) {
         toast.info(`${authUser.data.name}님 환영합니다!`);
         setShowWelcomeAlert(true);
       }
     } catch (error) {
       console.error("Error parsing authUser:", error);
     }
-  }, [authUser, showWelcomeAlert]);
+  }, [authUser]);
+
+  useEffect(() => {
+    if (authUser && !showWelcomeAlert) {
+      toast.info(`${authUser.data.name}님 환영합니다!`);
+      setShowWelcomeAlert(true);
+    }
+  }, [dispatch, authUser, showWelcomeAlert]);
 
   function handleLogout() {
     try {
