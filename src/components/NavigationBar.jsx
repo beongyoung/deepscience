@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import styles from "styled-components";
 import logo from "../assets/logo.png";
 import { ToastContainer, toast } from "react-toastify";
@@ -55,10 +55,12 @@ const LoginWrapper = styles.div`
 function NavigationBar() {
   const dispatch = useDispatch();
   const [showWelcomeAlert, setShowWelcomeAlert] = useState(false);
-  const authUser = useSelector((state) => state.auth.authUser);
+  const authUserString = localStorage.getItem("authUser");
+  const authUser = authUserString ? JSON.parse(authUserString) : null;
 
   useEffect(() => {
     try {
+      window.location.reload();
       if (authUser?.data && !showWelcomeAlert) {
         setShowWelcomeAlert(true);
         toast.info(`${authUser.data.name}님 환영합니다!`);
