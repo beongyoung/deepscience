@@ -52,23 +52,32 @@ const LoginWrapper = styles.div`
 
 function NavigationBar() {
   const dispatch = useDispatch();
-  const [showWelcomeAlert, setShowWelcomeAlert] = useState(true);
-  const authUser = JSON.parse(localStorage.getItem("authUser"));
+  const [showWelcomeAlert, setShowWelcomeAlert] = useState(false);
+  const authUserString = localStorage.getItem("authUser");
+  const authUser = authUserString ? JSON.parse(authUserString) : null;
 
   useEffect(() => {
-    if (authUser) {
-      alert(`${authUser.data.name}님 환영합니다!`);
-      setShowWelcomeAlert(false);
+    try {
+      if (authUser && authUser.data) {
+        alert(`${authUser.data.name}님 환영합니다!`);
+        setShowWelcomeAlert(true);
+      }
+    } catch (error) {
+      console.error("Error parsing authUser:", error);
     }
   }, [authUser, showWelcomeAlert]);
 
   function handleLogout() {
-    if (authUser) {
-      dispatch(logoutUser());
-      alert("로그아웃 되었습니다.");
-      window.location.reload();
-    } else {
-      alert("이미 로그아웃 되었습니다.");
+    try {
+      if (authUser) {
+        dispatch(logoutUser());
+        alert("로그아웃 되었습니다.");
+        window.location.reload();
+      } else {
+        alert("이미 로그아웃 되었습니다.");
+      }
+    } catch (error) {
+      console.error("Error handling logout:", error);
     }
   }
 
