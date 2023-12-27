@@ -52,16 +52,13 @@ const LoginWrapper = styles.div`
 
 function NavigationBar() {
   const dispatch = useDispatch();
-  const [storedAuthCode, setStoredAuthCode] = useState(
-    localStorage.getItem("authCode")
-  );
   const [storedAuthUser, setStoredAuthUser] = useState(
     localStorage.getItem("authUser")
   );
 
   useEffect(() => {
     setStoredAuthUser(localStorage.getItem("authUser"));
-  }, [storedAuthCode, storedAuthUser]);
+  }, [storedAuthUser]);
 
   function handleLogout() {
     if (storedAuthUser) {
