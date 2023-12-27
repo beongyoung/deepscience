@@ -24,7 +24,8 @@ function GoogleOAuth() {
             dispatch(setAuthUser(user));
             localStorage.setItem("authUser", JSON.stringify(user));
             Navigate("/");
-            alert(`${user.data.name}님 환영합니다!`);
+            if (localStorage.getItem("authUser"))
+              alert(`${user.data.name}님 환영합니다!`);
           }
         }
       } catch (error) {
