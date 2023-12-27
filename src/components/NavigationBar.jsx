@@ -57,10 +57,15 @@ function NavigationBar() {
   const [showWelcomeAlert, setShowWelcomeAlert] = useState(false);
   const authUserString = localStorage.getItem("authUser");
   const authUser = authUserString ? JSON.parse(authUserString) : null;
+  const [reloadPage, setReloadPage] = useState(true);
 
   useEffect(() => {
-    window.location.reload();
-  }, []);
+    if (reloadPage) {
+      console.log("Initial reload useEffect");
+      setReloadPage(false);
+      window.location.reload();
+    }
+  }, [reloadPage]);
 
   useEffect(() => {
     try {
