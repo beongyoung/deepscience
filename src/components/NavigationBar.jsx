@@ -58,14 +58,14 @@ function NavigationBar() {
 
   useEffect(() => {
     setStoredAuthUser(localStorage.getItem("authUser"));
-    navigator.reload();
+    window.location.reload();
   }, [storedAuthUser]);
 
   function handleLogout() {
     if (storedAuthUser) {
       dispatch(logoutUser());
       alert("로그아웃 되었습니다.");
-      navigator.reload();
+      window.location.reload();
     } else {
       alert("이미 로그아웃 되었습니다.");
     }
