@@ -5,7 +5,7 @@ import { setAuthCode, setAuthUser } from "../../redux/authAction";
 import fetchGetUser from "../../hooks/fetch/fetchGetUser";
 import Home from "../Home/Home";
 
-async function GoogleOAuth() {
+function GoogleOAuth() {
   const location = useLocation();
   const dispatch = useDispatch();
   const Navigate = useNavigate();
