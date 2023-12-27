@@ -60,21 +60,17 @@ function NavigationBar() {
 
   useEffect(() => {
     try {
+      console.log("Auth user in useEffect:", authUser);
       if (authUser?.data) {
-        toast.info(`${authUser.data.name}님 환영합니다!`);
-        setShowWelcomeAlert(true);
+        console.log("Showing welcome toast for:", authUser.data.name);
+        toast.info(`${authUser.data.name}님 환영합니다!`, {
+          onOpen: () => setShowWelcomeAlert(true),
+        });
       }
     } catch (error) {
       console.error("Error parsing authUser:", error);
     }
   }, [authUser]);
-
-  useEffect(() => {
-    if (authUser && !showWelcomeAlert) {
-      toast.info(`${authUser.data.name}님 환영합니다!`);
-      setShowWelcomeAlert(true);
-    }
-  }, [dispatch, authUser, showWelcomeAlert]);
 
   function handleLogout() {
     try {
