@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import styles from "styled-components";
 import logo from "../assets/logo.png";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { logoutUser } from "../redux/authAction";
 
 const NavWrapper = styles.nav`
@@ -59,8 +61,8 @@ function NavigationBar() {
   useEffect(() => {
     try {
       if (authUser?.data && !showWelcomeAlert) {
-        alert(`${authUser.data.name}님 환영합니다!`);
         setShowWelcomeAlert(true);
+        toast.success(`${authUser.data.name}님 환영합니다!`);
       }
     } catch (error) {
       console.error("Error parsing authUser:", error);
@@ -82,35 +84,38 @@ function NavigationBar() {
   }
 
   return (
-    <NavWrapper>
-      <Nav>
-        <Link to="/">
-          <LogoImg src={logo} alt="DeepScience X 로고" />
-        </Link>
-        <Link to="/info">
-          <NavItem>회사 정보</NavItem>
-        </Link>
-        <Link to="/company">
-          <NavItem>제품</NavItem>
-        </Link>
-        <Link to="/news">
-          <NavItem>뉴스</NavItem>
-        </Link>
-        <Link to="/support">
-          <NavItem>지원</NavItem>
-        </Link>
-        {authUser && showWelcomeAlert ? (
-          <LoginWrapper>
-            <span>{authUser.data.name}님</span>
-            <button onClick={handleLogout}>로그아웃</button>
-          </LoginWrapper>
-        ) : (
-          <LoginWrapper>
-            <Link to="/auth/login">로그인</Link>
-          </LoginWrapper>
-        )}
-      </Nav>
-    </NavWrapper>
+    <>
+      <ToastContainer />
+      <NavWrapper>
+        <Nav>
+          <Link to="/">
+            <LogoImg src={logo} alt="DeepScience X 로고" />
+          </Link>
+          <Link to="/info">
+            <NavItem>회사 정보</NavItem>
+          </Link>
+          <Link to="/company">
+            <NavItem>제품</NavItem>
+          </Link>
+          <Link to="/news">
+            <NavItem>뉴스</NavItem>
+          </Link>
+          <Link to="/support">
+            <NavItem>지원</NavItem>
+          </Link>
+          {authUser && showWelcomeAlert ? (
+            <LoginWrapper>
+              <span>{authUser.data.name}님</span>
+              <button onClick={handleLogout}>로그아웃</button>
+            </LoginWrapper>
+          ) : (
+            <LoginWrapper>
+              <Link to="/auth/login">로그인</Link>
+            </LoginWrapper>
+          )}
+        </Nav>
+      </NavWrapper>
+    </>
   );
 }
 
