@@ -58,7 +58,6 @@ function NavigationBar() {
 
   useEffect(() => {
     setStoredAuthUser(localStorage.getItem("authUser"));
-    window.location.reload();
   }, [storedAuthUser]);
 
   function handleLogout() {
