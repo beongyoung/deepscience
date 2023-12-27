@@ -58,7 +58,6 @@ function NavigationBar() {
   useEffect(() => {
     if (authUser) {
       alert(`${authUser.data.name}님 환영합니다!`);
-      window.location.reload();
       setShowWelcomeAlert(false);
     }
   }, [authUser, showWelcomeAlert]);
