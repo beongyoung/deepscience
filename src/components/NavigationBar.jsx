@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styles from "styled-components";
 import logo from "../assets/logo.png";
 import { ToastContainer, toast } from "react-toastify";
@@ -55,30 +55,22 @@ const LoginWrapper = styles.div`
 function NavigationBar() {
   const dispatch = useDispatch();
   const [showWelcomeAlert, setShowWelcomeAlert] = useState(false);
-  const authUserString = localStorage.getItem("authUser");
-  const authUser = authUserString ? JSON.parse(authUserString) : null;
+  const isAuthenticated = useSelector((state) => state.auth.authUser !== null);
+  const username = useSelector((state) => state.auth.authUser?.data.name || "");
 
   useEffect(() => {
-    try {
-      if (authUser?.data && !showWelcomeAlert) {
-        setShowWelcomeAlert(true);
-        toast.info(`${authUser.data.name}님 환영합니다!`);
-      }
-    } catch (error) {
-      console.error("Error parsing authUser:", error);
+    if (isAuthenticated && !showWelcomeAlert) {
+      setShowWelcomeAlert(true);
+      toast.info(`${username}님 환영합니다!`);
     }
-  }, [authUser, showWelcomeAlert]);
+  }, [isAuthenticated, showWelcomeAlert, username]);
 
   function handleLogout() {
     try {
-      if (authUser) {
-        dispatch(logoutUser());
-        toast.success(`${authUser.data.name}님 로그아웃 되었습니다.`, {
-          onClose: () => window.location.reload(),
-        });
-      } else {
-        alert("이미 로그아웃 되었습니다.");
-      }
+      dispatch(logoutUser());
+      toast.success(`${username}님 로그아웃 되었습니다.`, {
+        onClose: () => window.location.reload(),
+      });
     } catch (error) {
       console.error("Error handling logout:", error);
     }
@@ -104,9 +96,9 @@ function NavigationBar() {
           <Link to="/support">
             <NavItem>지원</NavItem>
           </Link>
-          {authUser && showWelcomeAlert ? (
+          {isAuthenticated && showWelcomeAlert ? (
             <LoginWrapper>
-              <span>{authUser.data.name}님</span>
+              <span>{username}님</span>
               <button onClick={handleLogout}>로그아웃</button>
             </LoginWrapper>
           ) : (
