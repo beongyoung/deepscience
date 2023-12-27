@@ -3,7 +3,6 @@ import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import { setAuthCode, setAuthUser } from "../../redux/authAction";
 import fetchGetUser from "../../hooks/fetch/fetchGetUser";
-import Home from "../Home/Home";
 
 function GoogleOAuth() {
   const location = useLocation();
