@@ -1,8 +1,9 @@
 import axios from "axios";
 
-const authToken = import.meta.env.VITE_SUCCESS_TOKEN;
+const authToken =
+  localStorage.getItem("authCode") || import.meta.env.VITE_SUCCESS_TOKEN;
 
-const fetchData = async () => {
+async function fetchData() {
   try {
     const response = await axios.post(
       `/v1/companies`,
@@ -23,6 +24,6 @@ const fetchData = async () => {
   } catch (error) {
     console.error(error);
   }
-};
+}
 
 export default fetchData;
