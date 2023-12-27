@@ -61,8 +61,8 @@ function NavigationBar() {
   useEffect(() => {
     try {
       if (authUser?.data && !showWelcomeAlert) {
+        toast.info(`${authUser.data.name}님 환영합니다!`);
         setShowWelcomeAlert(true);
-        toast.success(`${authUser.data.name}님 환영합니다!`);
       }
     } catch (error) {
       console.error("Error parsing authUser:", error);
@@ -73,8 +73,9 @@ function NavigationBar() {
     try {
       if (authUser) {
         dispatch(logoutUser());
-        alert("로그아웃 되었습니다.");
-        window.location.reload();
+        toast.success(`${authUser.data.name}님 로그아웃 되었습니다.`, {
+          onClose: () => window.location.reload(),
+        });
       } else {
         alert("이미 로그아웃 되었습니다.");
       }
