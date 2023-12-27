@@ -58,12 +58,14 @@ function NavigationBar() {
 
   useEffect(() => {
     setStoredAuthUser(localStorage.getItem("authUser"));
+    navigator.reload();
   }, [storedAuthUser]);
 
   function handleLogout() {
     if (storedAuthUser) {
       dispatch(logoutUser());
       alert("로그아웃 되었습니다.");
+      navigator.reload();
     } else {
       alert("이미 로그아웃 되었습니다.");
     }
@@ -87,7 +89,7 @@ function NavigationBar() {
         <Link to="/support">
           <NavItem>지원</NavItem>
         </Link>
-        {storedAuthUser !== null ? (
+        {storedAuthUser ? (
           <LoginWrapper>
             <span>{JSON.parse(storedAuthUser).data.name}님</span>
             <button onClick={handleLogout}>로그아웃</button>
