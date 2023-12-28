@@ -28,13 +28,13 @@ function GoogleOAuth() {
           if (user) {
             dispatch(setAuthUser(user));
             localStorage.setItem("authUser", JSON.stringify(user));
-            Navigate("/", { success: true });
+            Navigate("/");
           }
         }
       } catch (error) {
         console.error("Error fetching user data:", error);
         setError("Error fetching user data. Please try again.");
-        Navigate("/", { error: true });
+        Navigate("/auth/login");
       } finally {
         setLoading(false);
       }

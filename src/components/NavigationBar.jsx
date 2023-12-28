@@ -6,11 +6,6 @@ import logo from "../assets/logo.png";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { logoutUser } from "../redux/authAction";
-import PropTypes from "prop-types";
-
-NavigationBar.propTypes = {
-  location: PropTypes.object,
-};
 
 const NavWrapper = styles.nav`
   position: relative;
@@ -57,16 +52,12 @@ const LoginWrapper = styles.div`
   color: #000000;
 `;
 
-function NavigationBar(props) {
+function NavigationBar() {
   const dispatch = useDispatch();
   const [showWelcomeAlert, setShowWelcomeAlert] = useState(false);
-  const { location } = props;
-  const { success, error } = location && location.state ? location.state : {};
+
   const authUserString = localStorage.getItem("authUser");
   const authUser = authUserString ? JSON.parse(authUserString) : null;
-
-  if (success) toast.success("로그인 되었습니다.");
-  else if (error) toast.error("로그인에 실패했습니다.");
 
   useEffect(() => {
     try {
