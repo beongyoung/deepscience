@@ -69,7 +69,6 @@ function NavigationBar() {
     } catch (error) {
       console.error("Error parsing authUser:", error);
     }
-    return () => window.location.reload();
   }, [authUser, showWelcomeAlert]);
 
   function handleLogout() {
