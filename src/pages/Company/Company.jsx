@@ -10,7 +10,7 @@ import {
 import styled from "styled-components";
 import PDFViewer from "../../components/PDF/PDFViewer";
 import FileUpload from "../../components/PDF/FileUpload";
-import useFetchDart from "../../hooks/fetchDart";
+import useFetchDart from "../../hooks/fetch/fetchDart";
 
 const Section = styled.section`
   display: flex;
@@ -84,18 +84,6 @@ const HorizontalRule = styled.hr`
     border-top-color: #4a5568;
   }
 `;
-
-// const Grid = styled.div`
-//   max-width: 5xl;
-//   margin: 0 auto; // Center the grid
-//   display: grid;
-//   gap: 24px;
-//   align-items: center;
-//   grid-template-columns: 1fr;
-//   @media (min-width: 640px) {
-//     grid-template-columns: repeat(2, 1fr);
-//   }
-// `;
 
 const StyledCard = styled(Card)`
   && {
