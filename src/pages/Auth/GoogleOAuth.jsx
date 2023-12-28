@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
-import { setAuthCode, setAuthUser } from "../../redux/authAction";
+import {
+  setAuthCode,
+  setAuthUser,
+  setLoginStatus,
+} from "../../redux/authAction";
 import fetchGetUser from "../../hooks/fetch/fetchGetUser";
 
 function GoogleOAuth() {
@@ -20,16 +24,17 @@ function GoogleOAuth() {
         if (code) {
           const user = await fetchGetUser(code);
           dispatch(setAuthCode(code));
-
+          dispatch(setLoginStatus(true));
           if (user) {
             dispatch(setAuthUser(user));
             localStorage.setItem("authUser", JSON.stringify(user));
-            Navigate("/");
+            Navigate("/", { success: true });
           }
         }
       } catch (error) {
         console.error("Error fetching user data:", error);
         setError("Error fetching user data. Please try again.");
+        Navigate("/", { error: true });
       } finally {
         setLoading(false);
       }

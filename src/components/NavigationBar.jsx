@@ -1,11 +1,16 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import styles from "styled-components";
 import logo from "../assets/logo.png";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { logoutUser } from "../redux/authAction";
+import PropTypes from "prop-types";
+
+NavigationBar.propTypes = {
+  location: PropTypes.object,
+};
 
 const NavWrapper = styles.nav`
   position: relative;
@@ -52,23 +57,26 @@ const LoginWrapper = styles.div`
   color: #000000;
 `;
 
-function NavigationBar() {
+function NavigationBar(props) {
   const dispatch = useDispatch();
   const [showWelcomeAlert, setShowWelcomeAlert] = useState(false);
-  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+  const { success, error } = props.location.state || {};
   const authUserString = localStorage.getItem("authUser");
   const authUser = authUserString ? JSON.parse(authUserString) : null;
 
+  if (success) toast.success("로그인 되었습니다.");
+  else if (error) toast.error("로그인에 실패했습니다.");
+
   useEffect(() => {
     try {
-      if (isLoggedIn || (authUser?.data && !showWelcomeAlert)) {
+      if (authUser?.data && !showWelcomeAlert) {
         setShowWelcomeAlert(true);
         toast.info(`${authUser.data.name}님 환영합니다!`);
       }
     } catch (error) {
       console.error("Error parsing authUser:", error);
     }
-  }, [isLoggedIn, authUser, showWelcomeAlert]);
+  }, [authUser, showWelcomeAlert]);
 
   function handleLogout() {
     try {
@@ -105,7 +113,7 @@ function NavigationBar() {
           <Link to="/support">
             <NavItem>지원</NavItem>
           </Link>
-          {isLoggedIn || (authUser && showWelcomeAlert) ? (
+          {authUser && showWelcomeAlert ? (
             <LoginWrapper>
               <span>{authUser.data.name}님</span>
               <button onClick={handleLogout}>로그아웃</button>
