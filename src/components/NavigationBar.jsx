@@ -61,24 +61,15 @@ function NavigationBar() {
     const authUserString = localStorage.getItem("authUser");
     const authUser = authUserString ? JSON.parse(authUserString) : null;
     setAuthUser(authUser);
-
-    // Show welcome toast when authUser changes
-    if (authUser?.data && !showWelcomeAlert) {
-      setShowWelcomeAlert(true);
-      toast.info(`${authUser.data.name}님 환영합니다!`);
+    try {
+      if (authUser?.data && !showWelcomeAlert) {
+        setShowWelcomeAlert(true);
+        toast.info(`${authUser.data.name}님 환영합니다!`);
+      }
+    } catch (error) {
+      console.error("Error parsing authUser:", error);
     }
   }, [authUser, showWelcomeAlert]);
-
-  // useEffect(() => {
-  //   try {
-  //     if (authUser?.data && !showWelcomeAlert) {
-  //       setShowWelcomeAlert(true);
-  //       toast.info(`${authUser.data.name}님 환영합니다!`);
-  //     }
-  //   } catch (error) {
-  //     console.error("Error parsing authUser:", error);
-  //   }
-  // }, [authUser, showWelcomeAlert]);
 
   function handleLogout() {
     try {
