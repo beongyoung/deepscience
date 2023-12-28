@@ -67,12 +67,6 @@ function NavigationBar() {
     } catch (error) {
       console.error("Error parsing authUser:", error);
     }
-
-    // Check for null authUser and non-login path
-    if (authUser === null && window.location.pathname !== "/auth/login") {
-      console.log("Reloading...");
-      window.location.reload();
-    }
   }, [authUser, showWelcomeAlert]);
 
   function handleLogout() {
