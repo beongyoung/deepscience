@@ -109,7 +109,7 @@ function NavigationBar() {
           <Link to="/support">
             <NavItem>지원</NavItem>
           </Link>
-          {authUser && showWelcomeAlert ? (
+          {authUser !== null ? (
             <LoginWrapper>
               <span>{authUser.data.name}님</span>
               <button onClick={handleLogout}>로그아웃</button>
