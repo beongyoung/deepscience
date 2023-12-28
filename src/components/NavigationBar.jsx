@@ -57,10 +57,11 @@ const LoginWrapper = styles.div`
   color: #000000;
 `;
 
-function NavigationBar(props = null) {
+function NavigationBar(props) {
   const dispatch = useDispatch();
   const [showWelcomeAlert, setShowWelcomeAlert] = useState(false);
-  const { success, error } = props.location.state || {};
+  const { location } = props;
+  const { success, error } = location && location.state ? location.state : {};
   const authUserString = localStorage.getItem("authUser");
   const authUser = authUserString ? JSON.parse(authUserString) : null;
 
