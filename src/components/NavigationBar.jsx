@@ -62,13 +62,14 @@ function NavigationBar() {
     const authUser = authUserString ? JSON.parse(authUserString) : null;
     setAuthUser(authUser);
     try {
-      if (authUser?.data && !showWelcomeAlert) {
+      if (authUser?.data && showWelcomeAlert) {
         setShowWelcomeAlert(true);
         toast.info(`${authUser.data.name}님 환영합니다!`);
       }
     } catch (error) {
       console.error("Error parsing authUser:", error);
     }
+    return () => window.location.reload();
   }, [authUser, showWelcomeAlert]);
 
   function handleLogout() {
