@@ -59,8 +59,14 @@ function NavigationBar() {
   const authUser = authUserString ? JSON.parse(authUserString) : null;
 
   useEffect(() => {
+    console.log("Inside useEffect");
     try {
+      if (authUser === null) {
+        console.log("Reloading...");
+        window.location.reload();
+      }
       if (authUser?.data && !showWelcomeAlert) {
+        console.log("Showing welcome alert");
         setShowWelcomeAlert(true);
         toast.info(`${authUser.data.name}님 환영합니다!`);
       }
