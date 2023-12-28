@@ -57,7 +57,7 @@ const LoginWrapper = styles.div`
   color: #000000;
 `;
 
-function NavigationBar(props) {
+function NavigationBar(props = null) {
   const dispatch = useDispatch();
   const [showWelcomeAlert, setShowWelcomeAlert] = useState(false);
   const { success, error } = props.location.state || {};
