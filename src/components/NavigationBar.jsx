@@ -55,9 +55,13 @@ const LoginWrapper = styles.div`
 function NavigationBar() {
   const dispatch = useDispatch();
   const [showWelcomeAlert, setShowWelcomeAlert] = useState(false);
+  const [authUser, setAuthUser] = useState(null);
 
-  const authUserString = localStorage.getItem("authUser");
-  const authUser = authUserString ? JSON.parse(authUserString) : null;
+  useEffect(() => {
+    const authUserString = localStorage.getItem("authUser");
+    const authUser = authUserString ? JSON.parse(authUserString) : null;
+    setAuthUser(authUser);
+  }, []);
 
   useEffect(() => {
     try {
