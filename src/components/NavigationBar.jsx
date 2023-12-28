@@ -58,11 +58,6 @@ function NavigationBar() {
   const authUserString = localStorage.getItem("authUser");
   const authUser = authUserString ? JSON.parse(authUserString) : null;
 
-  if (authUser === null && window.location.pathname !== "/auth/login") {
-    console.log("Reloading...");
-    window.location.reload();
-  }
-
   useEffect(() => {
     try {
       if (authUser?.data && !showWelcomeAlert) {
@@ -71,6 +66,12 @@ function NavigationBar() {
       }
     } catch (error) {
       console.error("Error parsing authUser:", error);
+    }
+
+    // Check for null authUser and non-login path
+    if (authUser === null && window.location.pathname !== "/auth/login") {
+      console.log("Reloading...");
+      window.location.reload();
     }
   }, [authUser, showWelcomeAlert]);
 
