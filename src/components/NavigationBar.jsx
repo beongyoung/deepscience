@@ -58,7 +58,7 @@ function NavigationBar() {
   const authUserString = localStorage.getItem("authUser");
   const authUser = authUserString ? JSON.parse(authUserString) : null;
 
-  if (authUser === null) {
+  if (authUser === null && window.location.pathname !== "/auth/login") {
     console.log("Reloading...");
     window.location.reload();
   }
