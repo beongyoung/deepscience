@@ -62,7 +62,7 @@ function NavigationBar() {
     const authUser = authUserString ? JSON.parse(authUserString) : null;
     setAuthUser(authUser);
     try {
-      if (authUser?.data && showWelcomeAlert) {
+      if (authUser?.data && showWelcomeAlert === false) {
         setShowWelcomeAlert(true);
         toast.info(`${authUser.data.name}님 환영합니다!`);
       }
