@@ -63,8 +63,10 @@ function NavigationBar() {
     setAuthUser(authUser);
     try {
       if (authUser?.data && showWelcomeAlert === false) {
-        setShowWelcomeAlert(true);
         toast.info(`${authUser.data.name}님 환영합니다!`);
+        setShowWelcomeAlert(true);
+      } else if (authUser === null) {
+        setShowWelcomeAlert(false);
       }
     } catch (error) {
       console.error("Error parsing authUser:", error);
