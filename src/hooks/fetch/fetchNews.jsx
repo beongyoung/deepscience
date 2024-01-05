@@ -4,12 +4,13 @@ const NEWS_API_KEY = import.meta.env.VITE_NEWS_API_KEY;
 
 export async function fetchNews() {
   try {
-    const response = await axios.get("https://newsapi.org/v2/top-headlines", {
+    const response = await axios.get(`/v2/top-headlines`, {
       params: {
         country: "kr",
         category: "technology",
         apiKey: NEWS_API_KEY,
       },
+      withCredentials: true,
     });
 
     if (response.status !== 200) {

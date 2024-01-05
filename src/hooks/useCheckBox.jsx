@@ -17,14 +17,12 @@ function useCheckBox() {
       } else {
         setCheckedInputs([...checkedInputs, e.target.name]);
       }
+    } else if (e.target.name === "all") {
+      setCheckedInputs([]);
     } else {
-      if (e.target.name === "all") {
-        setCheckedInputs([]);
-      } else {
-        setCheckedInputs(
-          checkedInputs.filter((el) => el !== e.target.name && el !== "all")
-        );
-      }
+      setCheckedInputs(
+        checkedInputs.filter((el) => el !== e.target.name && el !== "all")
+      );
     }
   };
 

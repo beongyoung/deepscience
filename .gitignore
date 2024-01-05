@@ -29,6 +29,7 @@ dist-ssr
 logs
 **/*.backup.*
 **/*.back.*
+.setupProxy.js
 
 node_modules
 bower_components
@@ -39,4 +40,4 @@ psd
 thumb
 sketch
 .env
-yarn.lock
+yarn.*
