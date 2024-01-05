@@ -14,6 +14,11 @@ export const setAuthUser = (user) => {
   };
 };
 
+export const setLoginStatus = (isLoggedIn) => ({
+  type: "SET_LOGIN_STATUS",
+  payload: isLoggedIn,
+});
+
 export const logoutUser = () => ({
   localStorage: localStorage.clear(),
   type: "LOGOUT_USER",

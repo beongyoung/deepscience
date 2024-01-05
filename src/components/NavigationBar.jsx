@@ -55,14 +55,18 @@ const LoginWrapper = styles.div`
 function NavigationBar() {
   const dispatch = useDispatch();
   const [showWelcomeAlert, setShowWelcomeAlert] = useState(false);
-  const authUserString = localStorage.getItem("authUser");
-  const authUser = authUserString ? JSON.parse(authUserString) : null;
+  const [authUser, setAuthUser] = useState(null);
 
   useEffect(() => {
+    const authUserString = localStorage.getItem("authUser");
+    const authUser = authUserString ? JSON.parse(authUserString) : null;
+    setAuthUser(authUser);
     try {
-      if (authUser?.data && !showWelcomeAlert) {
-        setShowWelcomeAlert(true);
+      if (authUser?.data && showWelcomeAlert === false) {
         toast.info(`${authUser.data.name}님 환영합니다!`);
+        setShowWelcomeAlert(true);
+      } else if (authUser === null) {
+        setShowWelcomeAlert(false);
       }
     } catch (error) {
       console.error("Error parsing authUser:", error);
@@ -104,7 +108,7 @@ function NavigationBar() {
           <Link to="/support">
             <NavItem>지원</NavItem>
           </Link>
-          {authUser && showWelcomeAlert ? (
+          {authUser !== null ? (
             <LoginWrapper>
               <span>{authUser.data.name}님</span>
               <button onClick={handleLogout}>로그아웃</button>

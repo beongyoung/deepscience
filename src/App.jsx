@@ -10,6 +10,8 @@ import News from "./pages/News/News.jsx";
 import CompanyDetail from "./pages/Company/CompanyDetail.jsx";
 import GoogleOAuth from "./pages/Auth/GoogleOAuth.jsx";
 import DetailPage from "./pages/Company/DetailPage.jsx";
+import ImageUploader from "./pages/Company/CompanyImage.jsx";
+import PdfUploader from "./pages/Company/CompanyPDF.jsx";
 import Test from "./pages/Test/Test.jsx";
 
 function Router() {
@@ -23,6 +25,8 @@ function Router() {
           <Route path="" element={<Company />} />
           <Route path=":id" element={<CompanyDetail />} />
           <Route path="detail/:id" element={<DetailPage />} />
+          <Route path="image" element={<ImageUploader />} />
+          <Route path="pdf" element={<PdfUploader />} />
         </Route>
         <Route path="info" element={<Info />} />
         <Route path="news" element={<News />} />
