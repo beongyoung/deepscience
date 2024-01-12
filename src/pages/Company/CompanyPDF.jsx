@@ -29,24 +29,35 @@ function PdfUploader() {
   const [pdfName, setPdfName] = useState("");
 
   const handlePdfChange = async (e) => {
-    const file = e.target.files[0];
+    const selectedFile = e.target.files[0];
 
-    if (file) {
-      setPdfName(file.name);
+    if (!selectedFile) {
+      console.error("No file selected");
+      return;
+    }
 
+    setPdfName(selectedFile.name);
+
+    try {
+      const companyId = 5;
       const formData = new FormData();
-      formData.append("file", file);
+      formData.append("file", selectedFile);
 
-      try {
-        const companyId = 1;
-        const response = await fetchFiles.uploadPdf(companyId, formData);
-
-        alert("File uploaded successfully!");
-        console.log(response);
-      } catch (error) {
-        console.error("Error uploading file:", error);
-        alert("Error uploading file. Please try again.");
+      for (let key of formData.keys()) {
+        console.log(key);
       }
+
+      for (let value of formData.values()) {
+        console.log(value);
+      }
+
+      const response = await fetchFiles.uploadPdf(companyId, formData);
+
+      alert("File uploaded successfully!");
+      console.log(response);
+    } catch (error) {
+      console.error("Error uploading file:", error);
+      alert("Error uploading file. Please try again.");
     }
   };
 

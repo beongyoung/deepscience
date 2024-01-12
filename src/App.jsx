@@ -12,6 +12,7 @@ import GoogleOAuth from "./pages/Auth/GoogleOAuth.jsx";
 import DetailPage from "./pages/Company/DetailPage.jsx";
 import ImageUploader from "./pages/Company/CompanyImage.jsx";
 import PdfUploader from "./pages/Company/CompanyPDF.jsx";
+import FetchFile from "./pages/Company/FetchFile.jsx";
 import Test from "./pages/Test/Test.jsx";
 
 function Router() {
@@ -27,6 +28,7 @@ function Router() {
           <Route path="detail/:id" element={<DetailPage />} />
           <Route path="image" element={<ImageUploader />} />
           <Route path="pdf" element={<PdfUploader />} />
+          <Route path="file" element={<FetchFile />} />
         </Route>
         <Route path="info" element={<Info />} />
         <Route path="news" element={<News />} />
