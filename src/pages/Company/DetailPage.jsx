@@ -49,7 +49,9 @@ const CompanyDetail = () => {
     const fetchFinancialFile = async () => {
       try {
         const data = await fetchFiles.getFinancial(id);
-        setFinancial(data.data.split("?")[0]);
+        setFinancial(
+          data.data.split("/AUTH_2197aef3-436e-443d-a060-df0b98a86913")[1]
+        );
       } catch (error) {
         console.error("Error fetching company details:", error);
       }
@@ -57,7 +59,9 @@ const CompanyDetail = () => {
     const fetchQuantFile = async () => {
       try {
         const data = await fetchFiles.getQuant(id);
-        setQuant(data.data.split("?")[0]);
+        setQuant(
+          data.data.split("/AUTH_2197aef3-436e-443d-a060-df0b98a86913")[1]
+        );
       } catch (error) {
         console.error("Error fetching company details:", error);
       }
@@ -86,13 +90,12 @@ const CompanyDetail = () => {
           <CompanyDetailContainer>
             {financial ? (
               <>
-                <h2>Company Financial Analysis</h2>
-                <p>{financial}</p>
-                <PDFViewer url={financial} />
+                <h2>재무 분석</h2>
+                <PDFViewer fileUrl={String(financial)} />
               </>
             ) : (
               <>
-                <h2>Company Financial Analysis</h2>
+                <h2>재무 분석</h2>
                 <UploadFinancial id={id} />
               </>
             )}
@@ -100,12 +103,12 @@ const CompanyDetail = () => {
           <CompanyDetailContainer>
             {quant ? (
               <>
-                <h2>Company Quant Analysis</h2>
-                <p>{quant}</p>
+                <h2>퀀트 분석</h2>
+                <PDFViewer fileUrl={String(quant)} />
               </>
             ) : (
               <>
-                <h2>Company Quant Analysis</h2>
+                <h2>퀀트 분석</h2>
                 <UploadQuant id={id} />
               </>
             )}

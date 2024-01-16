@@ -52,12 +52,18 @@ function UploadFinancial(id) {
       }
 
       const response = fetchFiles.PostFinancial(companyId, formData);
-
-      alert("File uploaded successfully!");
+      if (response.status === 200) {
+        alert("File uploaded successfully!");
+      } else if (response.message === "File already exists") {
+        alert("File already exists");
+      } else if (response.message === "Maximum file size exceeded") {
+        alert("Maximum file size exceeded");
+      } else {
+        alert("Error uploading file. Please try again.");
+      }
       console.log(response.data);
     } catch (error) {
-      console.error("Error uploading file:", error);
-      alert("Error uploading file. Please try again.");
+      alert(error.response.data.message);
     }
   };
 
@@ -66,7 +72,7 @@ function UploadFinancial(id) {
       <UploadInput
         type="file"
         accept=".pdf"
-        id="pdfUploader"
+        id="Financial Upload"
         onChange={handlePdfChange}
       />
       <UploadButton htmlFor="Financial Upload">Upload Financial</UploadButton>

@@ -1,9 +1,9 @@
 import axios from "axios";
 const authToken = import.meta.env.VITE_SUCCESS_TOKEN;
 
-function FetchFile() {
-  const id = 13;
+const id = 13;
 
+function FetchFile() {
   // File Upload
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -66,7 +66,6 @@ function FetchFile() {
         },
       });
       alert("성공");
-      console.log(response);
       console.log(response.data);
     } catch (error) {
       alert("안돼...");

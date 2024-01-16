@@ -76,6 +76,38 @@ const fetchFiles = {
       throw new Error("Failed to fetch company details");
     }
   },
+  deleteFinancial: async (id) => {
+    try {
+      const response = await axios.delete(
+        `/v1/companies/${id}/financial-analysis`,
+        {
+          headers: {
+            "X-AUTH-TOKEN": authToken,
+          },
+        }
+      );
+      return response.data;
+    } catch (error) {
+      console.error("Error fetching company details:", error);
+      throw new Error("Failed to fetch company details");
+    }
+  },
+  deleteQuant: async (id) => {
+    try {
+      const response = await axios.delete(
+        `/v1/companies/${id}/quant-analysis`,
+        {
+          headers: {
+            "X-AUTH-TOKEN": authToken,
+          },
+        }
+      );
+      return response.data;
+    } catch (error) {
+      console.error("Error fetching company details:", error);
+      throw new Error("Failed to fetch company details");
+    }
+  },
 };
 
 export default fetchFiles;
