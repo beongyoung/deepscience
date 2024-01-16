@@ -53,15 +53,8 @@ function UploadFinancial(id) {
 
       const response = fetchFiles.PostFinancial(companyId, formData);
       if (response.status === 200) {
-        alert("File uploaded successfully!");
-      } else if (response.message === "File already exists") {
-        alert("File already exists");
-      } else if (response.message === "Maximum file size exceeded") {
-        alert("Maximum file size exceeded");
-      } else {
-        alert("Error uploading file. Please try again.");
+        alert("파일 업로드 성공!");
       }
-      console.log(response.data);
     } catch (error) {
       alert(error.response.data.message);
     }

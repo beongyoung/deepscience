@@ -15,12 +15,14 @@ const fetchFiles = {
           },
         }
       );
+      alert("파일 업로드 성공!");
       return response;
     } catch (error) {
       console.error("Error uploading PDF:", error.message);
       if (error.response) {
         console.error("Response Status:", error.response.status);
         console.error("Response Data:", error.response.data);
+        alert(error.response.data.message);
       }
       throw error;
     }
@@ -37,12 +39,14 @@ const fetchFiles = {
           },
         }
       );
+      alert("파일 업로드 성공!");
       return response;
     } catch (error) {
       console.error("Error uploading PDF:", error.message);
       if (error.response) {
         console.error("Response Status:", error.response.status);
         console.error("Response Data:", error.response.data);
+        alert(error.response.data.message);
       }
       throw error;
     }
