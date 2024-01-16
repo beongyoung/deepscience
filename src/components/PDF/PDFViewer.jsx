@@ -2,6 +2,12 @@ import { useState } from "react";
 import { Document, Page, pdfjs } from "react-pdf";
 import styled from "styled-components";
 
+import PropTypes from "prop-types";
+
+PDFViewer.propTypes = {
+  fileUrl: PropTypes.string.isRequired,
+};
+
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 const ViewerContainer = styled.div`
@@ -35,7 +41,7 @@ const StyledButton = styled.button`
   }
 `;
 
-function PDFViewer() {
+function PDFViewer({ fileUrl }) {
   const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
 
@@ -71,8 +77,8 @@ function PDFViewer() {
           <span>+</span>
         </StyledButton>
       </ControlsContainer>
-      <Document file="Sample.pdf" onLoadSuccess={onDocumentLoadSuccess}>
-        <Page width={800} pageNumber={pageNumber} />
+      <Document file={fileUrl} onLoadSuccess={onDocumentLoadSuccess}>
+        <Page width={800} height={100} pageNumber={pageNumber} />
       </Document>
     </ViewerContainer>
   );

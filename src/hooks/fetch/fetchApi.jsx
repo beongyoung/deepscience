@@ -1,7 +1,6 @@
 import axios from "axios";
 
-const authToken =
-  localStorage.getItem("authCode") || import.meta.env.VITE_SUCCESS_TOKEN;
+const authToken = import.meta.env.VITE_SUCCESS_TOKEN;
 
 async function fetchData() {
   try {

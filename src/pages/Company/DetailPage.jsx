@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import fetchGetCompanyDetail from "../../hooks/fetch/fetchGetCompanyDetail";
+import fetchFiles from "../../hooks/fetch/fetchFiles";
 import { useParams } from "react-router-dom";
+import UploadFinancial from "../Company/UploadFinancial";
+import UploadQuant from "../Company/UploadQuant";
+import PDFViewer from "../../components/PDF/PDFViewer";
 import styled from "styled-components";
 
 const CompanyDetailContainer = styled.div`
@@ -30,6 +34,8 @@ const translation = {
 const CompanyDetail = () => {
   const { id } = useParams();
   const [companyDetail, setCompanyDetail] = useState([]);
+  const [financial, setFinancial] = useState([]);
+  const [quant, setQuant] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -40,7 +46,29 @@ const CompanyDetail = () => {
         console.error("Error fetching company details:", error);
       }
     };
+    const fetchFinancialFile = async () => {
+      try {
+        const data = await fetchFiles.getFinancial(id);
+        setFinancial(
+          data.data.split("/AUTH_2197aef3-436e-443d-a060-df0b98a86913")[1]
+        );
+      } catch (error) {
+        console.error("Error fetching company details:", error);
+      }
+    };
+    const fetchQuantFile = async () => {
+      try {
+        const data = await fetchFiles.getQuant(id);
+        setQuant(
+          data.data.split("/AUTH_2197aef3-436e-443d-a060-df0b98a86913")[1]
+        );
+      } catch (error) {
+        console.error("Error fetching company details:", error);
+      }
+    };
 
+    fetchQuantFile();
+    fetchFinancialFile();
     fetchData();
   }, [id]);
 
@@ -58,6 +86,32 @@ const CompanyDetail = () => {
               <p>Company Description: {companyDetail.description}</p>
               <p>Company stockCode: {companyDetail.stockCode}</p>
             </CompanyInfo>
+          </CompanyDetailContainer>
+          <CompanyDetailContainer>
+            {financial ? (
+              <>
+                <h2>재무 분석</h2>
+                <PDFViewer fileUrl={String(financial)} />
+              </>
+            ) : (
+              <>
+                <h2>재무 분석</h2>
+                <UploadFinancial id={id} />
+              </>
+            )}
+          </CompanyDetailContainer>
+          <CompanyDetailContainer>
+            {quant ? (
+              <>
+                <h2>퀀트 분석</h2>
+                <PDFViewer fileUrl={String(quant)} />
+              </>
+            ) : (
+              <>
+                <h2>퀀트 분석</h2>
+                <UploadQuant id={id} />
+              </>
+            )}
           </CompanyDetailContainer>
         </>
       )}
