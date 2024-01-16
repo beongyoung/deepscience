@@ -5,13 +5,13 @@ import Home from "./pages/Home/Home.jsx";
 import Info from "./pages/Info/Info.jsx";
 import Login from "./pages/Auth/Login.jsx";
 import Signup from "./pages/Auth/Signup.jsx";
-import Company from "./pages/Company/Company.jsx";
 import News from "./pages/News/News.jsx";
 import CompanyDetail from "./pages/Company/CompanyDetail.jsx";
 import GoogleOAuth from "./pages/Auth/GoogleOAuth.jsx";
 import DetailPage from "./pages/Company/DetailPage.jsx";
+import Company from "./pages/Company/Company.jsx";
 import ImageUploader from "./pages/Company/CompanyImage.jsx";
-import PdfUploader from "./pages/Company/CompanyPDF.jsx";
+import FetchFile from "./hooks/fetch/FetchFile.jsx";
 import Test from "./pages/Test/Test.jsx";
 
 function Router() {
@@ -26,7 +26,7 @@ function Router() {
           <Route path=":id" element={<CompanyDetail />} />
           <Route path="detail/:id" element={<DetailPage />} />
           <Route path="image" element={<ImageUploader />} />
-          <Route path="pdf" element={<PdfUploader />} />
+          <Route path="file" element={<FetchFile />} />
         </Route>
         <Route path="info" element={<Info />} />
         <Route path="news" element={<News />} />
