@@ -35,7 +35,7 @@ const StyledButton = styled.button`
   }
 `;
 
-function PDFViewer() {
+function PDFViewer(url) {
   const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
 
@@ -71,7 +71,7 @@ function PDFViewer() {
           <span>+</span>
         </StyledButton>
       </ControlsContainer>
-      <Document file="Sample.pdf" onLoadSuccess={onDocumentLoadSuccess}>
+      <Document file={url} onLoadSuccess={onDocumentLoadSuccess}>
         <Page width={800} pageNumber={pageNumber} />
       </Document>
     </ViewerContainer>

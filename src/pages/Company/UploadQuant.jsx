@@ -25,7 +25,7 @@ const UploadButton = styled.label`
   }
 `;
 
-function PdfUploader() {
+function UploadQuant(id) {
   const [pdfName, setPdfName] = useState("");
 
   const handlePdfChange = async (e) => {
@@ -39,7 +39,7 @@ function PdfUploader() {
     setPdfName(selectedFile.name);
 
     try {
-      const companyId = 5;
+      const companyId = id;
       const formData = new FormData();
       formData.append("file", selectedFile);
 
@@ -51,10 +51,10 @@ function PdfUploader() {
         console.log(value);
       }
 
-      const response = await fetchFiles.uploadPdf(companyId, formData);
+      const response = fetchFiles.PostQuant(companyId, formData);
 
       alert("File uploaded successfully!");
-      console.log(response);
+      console.log(response.data);
     } catch (error) {
       console.error("Error uploading file:", error);
       alert("Error uploading file. Please try again.");
@@ -69,10 +69,10 @@ function PdfUploader() {
         id="pdfUploader"
         onChange={handlePdfChange}
       />
-      <UploadButton htmlFor="pdfUploader">Upload PDF</UploadButton>
+      <UploadButton htmlFor="Quant Upload">Upload Quant</UploadButton>
       {pdfName && <p>Selected PDF: {pdfName}</p>}
     </PdfUploaderContainer>
   );
 }
 
-export default PdfUploader;
+export default UploadQuant;

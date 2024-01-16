@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import fetchGetCompanyDetail from "../../hooks/fetch/fetchGetCompanyDetail";
+import fetchFiles from "../../hooks/fetch/fetchFiles";
 import { useParams } from "react-router-dom";
+import UploadFinancial from "../Company/UploadFinancial";
+import UploadQuant from "../Company/UploadQuant";
+import PDFViewer from "../../components/PDF/PDFViewer";
 import styled from "styled-components";
 
 const CompanyDetailContainer = styled.div`
@@ -30,6 +34,8 @@ const translation = {
 const CompanyDetail = () => {
   const { id } = useParams();
   const [companyDetail, setCompanyDetail] = useState([]);
+  const [financial, setFinancial] = useState([]);
+  const [quant, setQuant] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -40,7 +46,25 @@ const CompanyDetail = () => {
         console.error("Error fetching company details:", error);
       }
     };
+    const fetchFinancialFile = async () => {
+      try {
+        const data = await fetchFiles.getFinancial(id);
+        setFinancial(data.data.split("?")[0]);
+      } catch (error) {
+        console.error("Error fetching company details:", error);
+      }
+    };
+    const fetchQuantFile = async () => {
+      try {
+        const data = await fetchFiles.getQuant(id);
+        setQuant(data.data.split("?")[0]);
+      } catch (error) {
+        console.error("Error fetching company details:", error);
+      }
+    };
 
+    fetchQuantFile();
+    fetchFinancialFile();
     fetchData();
   }, [id]);
 
@@ -58,6 +82,33 @@ const CompanyDetail = () => {
               <p>Company Description: {companyDetail.description}</p>
               <p>Company stockCode: {companyDetail.stockCode}</p>
             </CompanyInfo>
+          </CompanyDetailContainer>
+          <CompanyDetailContainer>
+            {financial ? (
+              <>
+                <h2>Company Financial Analysis</h2>
+                <p>{financial}</p>
+                <PDFViewer url={financial} />
+              </>
+            ) : (
+              <>
+                <h2>Company Financial Analysis</h2>
+                <UploadFinancial id={id} />
+              </>
+            )}
+          </CompanyDetailContainer>
+          <CompanyDetailContainer>
+            {quant ? (
+              <>
+                <h2>Company Quant Analysis</h2>
+                <p>{quant}</p>
+              </>
+            ) : (
+              <>
+                <h2>Company Quant Analysis</h2>
+                <UploadQuant id={id} />
+              </>
+            )}
           </CompanyDetailContainer>
         </>
       )}
