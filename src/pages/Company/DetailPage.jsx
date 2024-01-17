@@ -81,10 +81,10 @@ const CompanyDetail = () => {
           </h1>
           <CompanyDetailContainer>
             <CompanyInfo>
-              <p>Company Category: {translation[companyDetail.category]}</p>
-              <p>Company Name: {companyDetail.name}</p>
-              <p>Company Description: {companyDetail.description}</p>
-              <p>Company stockCode: {companyDetail.stockCode}</p>
+              <p>회사 업종: {translation[companyDetail.category]}</p>
+              <p>회사 이름: {companyDetail.name}</p>
+              <p>회사 설명: {companyDetail.description}</p>
+              <p>공시 코드: {companyDetail.stockCode}</p>
             </CompanyInfo>
           </CompanyDetailContainer>
           <CompanyDetailContainer>
