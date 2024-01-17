@@ -51,7 +51,7 @@ export default function Home() {
 
   return (
     <>
-      <BackgroundImage src={MainImg} alt="" />
+      <BackgroundImage src={MainImg} alt=""/>
       <ContainerWrapper>
         <Grid container spacing={4}>
           {menuList.map((menu) => (
