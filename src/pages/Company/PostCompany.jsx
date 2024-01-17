@@ -76,6 +76,16 @@ const PostCompany = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      if (
+        !formData.name ||
+        !formData.category ||
+        !formData.description ||
+        !formData.stockCode
+      ) {
+        alert("모든 필드를 작성하세요.");
+        return;
+      }
+
       const response = await fetchCompany.postCompany(formData);
       alert("회사 등록에 성공했습니다.");
       navigate("/company");
@@ -83,6 +93,20 @@ const PostCompany = () => {
     } catch (error) {
       alert("회사 등록에 실패했습니다.");
       navigate("/company/post");
+      console.error(error);
+    }
+  };
+
+  const search = async () => {
+    try {
+      const response = await fetchCompany.getCompany(formData.stockCode);
+      console.log(response);
+      setFormData((prevData) => ({
+        ...prevData,
+        name: response.corp_name,
+        description: response.corp_name_eng,
+      }));
+    } catch (error) {
       console.error(error);
     }
   };
@@ -139,6 +163,9 @@ const PostCompany = () => {
               value={formData.stockCode}
               onChange={handleChange}
             />
+            <Button type="button" onClick={search}>
+              검색
+            </Button>
           </Row>
           <Button type="submit">Submit</Button>
         </Form>
