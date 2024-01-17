@@ -10,6 +10,29 @@ import {
   Checkbox,
 } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
+import { styled } from "@mui/system";
+import OAuth from "../../hooks/OAuth";
+import googleBtn from "../../assets/signin-assets/Web (mobile + desktop)/png@1x/neutral/web_neutral_sq_SU@1x.png";
+
+const StyledGoogleButton = styled(Button)`
+  background-color: #f5f5f5;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  border-radius: 0.5rem;
+  padding: 0;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 100%;
+  height: 3rem;
+  cursor: pointer;
+  &:hover {
+    background-color: #f5f5f5;
+  }
+  &:active {
+    background-color: #616161;
+  }
+`;
 
 function Login() {
   const [id, setId] = useState("");
@@ -17,17 +40,15 @@ function Login() {
   const [rememberId, setRememberId] = useState(false);
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  // 	console.log(rememberId);
-  // }, [rememberId]);
-
   const onLoginClick = () => {
-    // 로그인
-
-    // 아이디 저장 관리
-    // rememberId ? 쿠키 없애기 : 만들기
     navigate("/");
   };
+
+  const GOOGLE_REDIRECT_URL = OAuth().GOOGLE_REDIRECT_URL;
+
+  function handleGoogleBtnClick() {
+    window.location.href = GOOGLE_REDIRECT_URL;
+  }
 
   return (
     <Container>
@@ -94,6 +115,14 @@ function Login() {
               <Button>회원가입</Button>
             </Link>
           </Box>
+
+          <StyledGoogleButton
+            variant="fullWidth"
+            onClick={handleGoogleBtnClick}
+            className="googlebtn"
+          >
+            <img src={googleBtn} alt="google 로그인" />
+          </StyledGoogleButton>
         </Stack>
       </Box>
     </Container>
