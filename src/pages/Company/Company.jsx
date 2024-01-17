@@ -1,11 +1,35 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
+import CompanyImg from "../../assets/CompanyImg.jpg";
+import styled from "styled-components";
+
+const StyledGridItem = styled(Grid)`
+  button {
+    font-size: x-large;
+    font-weight: bolder;
+  }
+`;
+
+const BackgroundImage = styled.img`
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+`;
+
+const ContainerWrapper = styled(Container)`
+  position: absolute;
+  bottom: -12%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  padding: 0;
+  margin: 0;
+`;
 
 function Company() {
-  const [selectedCategory, setSelectedCategory] = useState("");
   const navigate = useNavigate();
 
   const menuList = [
@@ -28,31 +52,29 @@ function Company() {
     navigate(`${category}`);
   };
 
-  const handleCategorySelect = (category) => {
-    setSelectedCategory(category);
-  };
-
   return (
-    <Container>
-      <Grid container spacing={4}>
-        {menuList.map((menu) => (
-          <Grid item xs={12} sm={6} md={4} key={menu.title}>
-            <Button
-              variant="contained"
-              color="primary"
-              fullWidth
-              onClick={() => {
-                handleCategorySelect(menu.category);
-                handleButtonClick(menu.category);
-              }}
-            >
-              {menu.title}
-            </Button>
-          </Grid>
-        ))}
-      </Grid>
-      {selectedCategory && <p>Selected Category: {selectedCategory}</p>}
-    </Container>
+    <>
+      <BackgroundImage src={CompanyImg} alt="" />
+      <ContainerWrapper>
+        <Grid container spacing={4}>
+          {menuList.map((menu) => (
+            <StyledGridItem item xs={12} sm={6} md={4} key={menu.title}>
+              <Button
+                variant="outlined"
+                style={{
+                  backgroundColor: "rgba(255, 255, 255, 0.6)", // 배경색 수정
+                  color: "black",
+                }}
+                fullWidth
+                onClick={() => handleButtonClick(menu.category)}
+              >
+                {menu.title}
+              </Button>
+            </StyledGridItem>
+          ))}
+        </Grid>
+      </ContainerWrapper>
+    </>
   );
 }
 
