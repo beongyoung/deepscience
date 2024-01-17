@@ -1,0 +1,40 @@
+/* info.css */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .title {
+    color: #123456; /* 예시 색상 */
+    margin-bottom: 20px;
+  }
+  
+  .card-media {
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  
+  .history-item, .team-item {
+    margin-bottom: 15px;
+  }
+  
+  .team-avatar {
+    width: 80px;
+    height: 80px;
+    border: 2px solid #123456; /* 예시 색상 */
+  }
+  
+  .team-name {
+    font-weight: bold;
+  }
+  
+  .team-position {
+    color: #555; /* 예시 색상 */
+  }
+  
+  @media screen and (max-width: 768px) {
+    .container {
+      padding: 10px;
+    }
+  }

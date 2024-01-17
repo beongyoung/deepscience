@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import styles from "styled-components";
-import logo from "../assets/logo.png";
+import logo from "../assets/nova_x_logo.png";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { logoutUser } from "../redux/authAction";
@@ -94,7 +94,7 @@ function NavigationBar() {
       <NavWrapper>
         <Nav>
           <Link to="/">
-            <LogoImg src={logo} alt="DeepScience X 로고" />
+            <LogoImg src={logo} alt="DeepScience X 로고" style={{marginTop:'12px'}}/>
           </Link>
           <Link to="/info">
             <NavItem>회사 정보</NavItem>
