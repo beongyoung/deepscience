@@ -1,8 +1,8 @@
 import { Container, Box, Grid, Button } from "@mui/material";
 import styled from "styled-components";
-import Search from "../../components/Search";
+// import Search from "../../components/Search";
 import { useNavigate } from "react-router-dom";
-import CleanTech from "../../assets/clean_tech.jpeg";
+import CleanTech from "../../assets/1.jpg";
 
 const StyledGridItem = styled(Grid)`
   button {
@@ -34,19 +34,19 @@ export default function Home() {
   };
 
   return (
-    <Container>
-      <Search />
+    <Container style={{backgroundImage :{CleanTech}}}>
+      {/* <Search /> */}
       <Box display={"flex"} justifyContent={"center"}>
         <Box
           component="img"
           sx={{
             bgcolor: "#EFF3FD",
-            mt: 3,
+            mt: 2,
             mb: 3,
           }}
           src={CleanTech}
-          height={560}
-          width={"100%"}
+          height={"100vh"}
+          width={"100vm"}
           border={0}
         />
       </Box>
