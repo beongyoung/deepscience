@@ -1,14 +1,30 @@
-import { Container, Box, Grid, Button } from "@mui/material";
+import { Container, Grid, Button } from "@mui/material";
 import styled from "styled-components";
-// import Search from "../../components/Search";
 import { useNavigate } from "react-router-dom";
-import CleanTech from "../../assets/1.jpg";
+import MainImg from "../../assets/MainImg.jpeg";
 
 const StyledGridItem = styled(Grid)`
   button {
     font-size: x-large;
     font-weight: bolder;
   }
+`;
+
+const ContainerWrapper = styled(Container)`
+  position: fixed;
+  bottom: 12%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  padding: 0;
+  margin: 0;
+`;
+
+const BackgroundImage = styled.img`
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 `;
 
 export default function Home() {
@@ -34,36 +50,27 @@ export default function Home() {
   };
 
   return (
-    <Container style={{backgroundImage :{CleanTech}}}>
-      {/* <Search /> */}
-      <Box display={"flex"} justifyContent={"center"}>
-        <Box
-          component="img"
-          sx={{
-            bgcolor: "#EFF3FD",
-            mt: 2,
-            mb: 3,
-          }}
-          src={CleanTech}
-          height={"100vh"}
-          width={"100vm"}
-          border={0}
-        />
-      </Box>
-      <Grid container spacing={4}>
-        {menuList.map((menu) => (
-          <StyledGridItem item xs={12} sm={6} md={4} key={menu.title}>
-            <Button
-              variant="contained"
-              color="primary"
-              fullWidth
-              onClick={() => handleButtonClick(menu.category)}
-            >
-              {menu.title}
-            </Button>
-          </StyledGridItem>
-        ))}
-      </Grid>
-    </Container>
+    <>
+      <BackgroundImage src={MainImg} alt="" />
+      <ContainerWrapper>
+        <Grid container spacing={4}>
+          {menuList.map((menu) => (
+            <StyledGridItem item xs={12} sm={6} md={4} key={menu.title}>
+              <Button
+                variant="outlined"
+                style={{
+                  backgroundColor: "rgba(255, 255, 255, 0.6)", // 배경색 수정
+                  color: "black", // 글자색 수정
+                }}
+                fullWidth
+                onClick={() => handleButtonClick(menu.category)}
+              >
+                {menu.title}
+              </Button>
+            </StyledGridItem>
+          ))}
+        </Grid>
+      </ContainerWrapper>
+    </>
   );
 }
