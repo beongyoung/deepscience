@@ -11,8 +11,8 @@ const StyledGridItem = styled(Grid)`
 `;
 
 const ContainerWrapper = styled(Container)`
-  position: fixed;
-  bottom: 12%;
+  position: absolute;
+  bottom: -12%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 10;
