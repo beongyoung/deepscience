@@ -11,11 +11,11 @@ const StyledGridItem = styled(Grid)`
 `;
 
 const ContainerWrapper = styled(Container)`
-  position: absolute;
-  bottom: 10%;
+  position: fixed;
+  bottom: 12%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 1;
+  z-index: 10;
   padding: 0;
   margin: 0;
 `;
@@ -24,6 +24,7 @@ const BackgroundImage = styled.img`
   top: 0;
   left: 0;
   width: 100%;
+  height: 100%;
 `;
 
 export default function Home() {
