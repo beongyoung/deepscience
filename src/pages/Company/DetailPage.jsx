@@ -1,7 +1,12 @@
 import { useEffect, useState } from "react";
-import fetchGetCompanyDetail from "../../hooks/fetch/fetchGetCompanyDetail";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
+import fetchGetCompanyDetail from "../../hooks/fetch/fetchGetCompanyDetail";
+import fetchFiles from "../../hooks/fetch/fetchFiles";
+import UploadFinancial from "../Company/UploadFinancial";
+import UploadQuant from "../Company/UploadQuant";
+import PDFViewer from "../../components/PDF/PDFViewer";
+import PropTypes from "prop-types";
 
 const CompanyDetailContainer = styled.div`
   padding: 20px;
@@ -27,21 +32,57 @@ const translation = {
   AEORSPACE: "항공우주",
 };
 
+const AnalysisSection = ({ title, file, uploadComponent }) => (
+  <CompanyDetailContainer>
+    {file ? (
+      <>
+        <h2>{title}</h2>
+        <PDFViewer fileUrl={String(file)} />
+      </>
+    ) : (
+      <>
+        <h2>{title}</h2>
+        {uploadComponent}
+      </>
+    )}
+  </CompanyDetailContainer>
+);
+AnalysisSection.propTypes = {
+  title: PropTypes.string.isRequired,
+  file: PropTypes.string,
+  uploadComponent: PropTypes.node,
+};
+
 const CompanyDetail = () => {
   const { id } = useParams();
-  const [companyDetail, setCompanyDetail] = useState([]);
+  const [companyDetail, setCompanyDetail] = useState({});
+  const [financial, setFinancial] = useState(null);
+  const [quant, setQuant] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await fetchGetCompanyDetail(id);
-        setCompanyDetail(data.data);
+        const { data } = await fetchGetCompanyDetail(id);
+        setCompanyDetail(data);
+      } catch (error) {
+        console.error("Error fetching company details:", error);
+      }
+    };
+
+    const fetchFile = async (fetchFunction, setFunction) => {
+      try {
+        const data = await fetchFunction(id);
+        setFunction(
+          data.data.split("/AUTH_2197aef3-436e-443d-a060-df0b98a86913")[1]
+        );
       } catch (error) {
         console.error("Error fetching company details:", error);
       }
     };
 
     fetchData();
+    fetchFile(fetchFiles.getFinancial, setFinancial);
+    fetchFile(fetchFiles.getQuant, setQuant);
   }, [id]);
 
   return (
@@ -49,16 +90,28 @@ const CompanyDetail = () => {
       {companyDetail && (
         <>
           <h1 style={{ textAlign: "center" }}>
-            Company Detail for {companyDetail.id}
+            {companyDetail.name} 기업의 정보
           </h1>
           <CompanyDetailContainer>
             <CompanyInfo>
-              <p>Company Category: {translation[companyDetail.category]}</p>
-              <p>Company Name: {companyDetail.name}</p>
-              <p>Company Description: {companyDetail.description}</p>
-              <p>Company stockCode: {companyDetail.stockCode}</p>
+              <p>회사 업종: {translation[companyDetail.category]}</p>
+              <p>회사 이름: {companyDetail.name}</p>
+              <p>회사 설명: {companyDetail.description}</p>
+              <p>공시 코드: {companyDetail.stockCode}</p>
             </CompanyInfo>
           </CompanyDetailContainer>
+
+          <AnalysisSection
+            title="재무 분석"
+            file={financial}
+            uploadComponent={<UploadFinancial id={id} />}
+          />
+
+          <AnalysisSection
+            title="퀀트 분석"
+            file={quant}
+            uploadComponent={<UploadQuant id={id} />}
+          />
         </>
       )}
     </>

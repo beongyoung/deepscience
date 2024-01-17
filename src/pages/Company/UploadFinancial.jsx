@@ -25,28 +25,38 @@ const UploadButton = styled.label`
   }
 `;
 
-function PdfUploader() {
+function UploadFinancial(id) {
   const [pdfName, setPdfName] = useState("");
 
   const handlePdfChange = async (e) => {
-    const file = e.target.files[0];
+    const selectedFile = e.target.files[0];
 
-    if (file) {
-      setPdfName(file.name);
+    if (!selectedFile) {
+      console.error("No file selected");
+      return;
+    }
 
+    setPdfName(selectedFile.name);
+
+    try {
+      const companyId = id;
       const formData = new FormData();
-      formData.append("file", file);
+      formData.append("file", selectedFile);
 
-      try {
-        const companyId = 1;
-        const response = await fetchFiles.uploadPdf(companyId, formData);
-
-        alert("File uploaded successfully!");
-        console.log(response);
-      } catch (error) {
-        console.error("Error uploading file:", error);
-        alert("Error uploading file. Please try again.");
+      for (let key of formData.keys()) {
+        console.log(key);
       }
+
+      for (let value of formData.values()) {
+        console.log(value);
+      }
+
+      const response = fetchFiles.PostFinancial(companyId, formData);
+      if (response.status === 200) {
+        alert("파일 업로드 성공!");
+      }
+    } catch (error) {
+      alert(error.response.data.message);
     }
   };
 
@@ -55,13 +65,13 @@ function PdfUploader() {
       <UploadInput
         type="file"
         accept=".pdf"
-        id="pdfUploader"
+        id="Financial Upload"
         onChange={handlePdfChange}
       />
-      <UploadButton htmlFor="pdfUploader">Upload PDF</UploadButton>
+      <UploadButton htmlFor="Financial Upload">Upload Financial</UploadButton>
       {pdfName && <p>Selected PDF: {pdfName}</p>}
     </PdfUploaderContainer>
   );
 }
 
-export default PdfUploader;
+export default UploadFinancial;
