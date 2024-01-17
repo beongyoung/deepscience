@@ -12,6 +12,7 @@ import DetailPage from "./pages/Company/DetailPage.jsx";
 import Company from "./pages/Company/Company.jsx";
 import ImageUploader from "./pages/Company/CompanyImage.jsx";
 import FetchFile from "./hooks/fetch/FetchFile.jsx";
+import PostCompany from "./pages/Company/PostCompany.jsx";
 import Test from "./pages/Test/Test.jsx";
 
 function Router() {
@@ -26,6 +27,7 @@ function Router() {
           <Route path=":id" element={<CompanyDetail />} />
           <Route path="detail/:id" element={<DetailPage />} />
           <Route path="image" element={<ImageUploader />} />
+          <Route path="post" element={<PostCompany />} />
           <Route path="file" element={<FetchFile />} />
         </Route>
         <Route path="info" element={<Info />} />
