@@ -105,9 +105,6 @@ function NavigationBar() {
           <Link to="/news">
             <NavItem>뉴스</NavItem>
           </Link>
-          <Link to="/support">
-            <NavItem>지원</NavItem>
-          </Link>
           {authUser !== null ? (
             <LoginWrapper>
               <span>{authUser.data.name}님</span>
