@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import fetchCompany from "../../hooks/fetch/fetchCompany";
+import { useNavigate } from "react-router-dom";
 
 const FormContainer = styled.div`
   max-width: 400px;
@@ -54,14 +55,6 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
-const SuccessMessage = styled.p`
-  color: green;
-`;
-
-const ErrorMessage = styled.p`
-  color: red;
-`;
-
 const PostCompany = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -69,9 +62,6 @@ const PostCompany = () => {
     description: "",
     stockCode: "",
   });
-
-  const [successMessage, setSuccessMessage] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -81,20 +71,18 @@ const PostCompany = () => {
     }));
   };
 
+  const navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
       const response = await fetchCompany.postCompany(formData);
-
-      if (response.status === 200) {
-        setSuccessMessage("Company successfully submitted!");
-        setErrorMessage("");
-      }
+      alert("회사 등록에 성공했습니다.");
+      navigate("/company");
       console.log(response);
     } catch (error) {
-      setErrorMessage("Error submitting the company. Please try again.");
-      setSuccessMessage("");
+      alert("회사 등록에 실패했습니다.");
+      navigate("/company/post");
       console.error(error);
     }
   };
@@ -154,8 +142,6 @@ const PostCompany = () => {
           </Row>
           <Button type="submit">Submit</Button>
         </Form>
-        {successMessage && <SuccessMessage>{successMessage}</SuccessMessage>}
-        {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
       </FormContainer>
     </>
   );
