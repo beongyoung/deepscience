@@ -12,7 +12,7 @@ const StyledGridItem = styled(Grid)`
 
 const ContainerWrapper = styled(Container)`
   position: absolute;
-  bottom: -12%;
+  bottom: -30em;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 10;
@@ -51,7 +51,7 @@ export default function Home() {
 
   return (
     <>
-      <BackgroundImage src={MainImg} alt="" />
+      <BackgroundImage src={MainImg} alt=""/>
       <ContainerWrapper>
         <Grid container spacing={4}>
           {menuList.map((menu) => (
