@@ -7,7 +7,7 @@ export async function fetchNews() {
     const response = await axios.get(`/v2/top-headlines`, {
       params: {
         country: "kr",
-        category: "technology",
+        category: "business",
         apiKey: NEWS_API_KEY,
       },
       withCredentials: true,
@@ -23,3 +23,5 @@ export async function fetchNews() {
     return [];
   }
 }
+
+

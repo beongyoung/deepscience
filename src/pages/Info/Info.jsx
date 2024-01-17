@@ -1,4 +1,5 @@
 import React from "react";
+import './info.css'; // CSS 파일 임포트
 import {
   Avatar,
   CardMedia,
@@ -12,6 +13,7 @@ import {
 } from "@mui/material";
 import cardImg from "../../assets/about_deepscience.png";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+
 
 const history = [
   `DeepScience X 2023년 7월 설립`,
@@ -29,7 +31,7 @@ function generateHistory() {
       {idx === 0 ? (
         <ListItemText
           primary={
-            <Typography color={"primary"} variant={"h6"}>
+            <Typography variant={"h6"}>
               {value}
             </Typography>
           }
@@ -44,29 +46,23 @@ function generateHistory() {
 }
 
 const teamMembers = [
-  { img: "", name: "김경남", hierarchy: "CEO", contact: "sciencex@gmail.com" },
-  { img: "", name: "김경남", hierarchy: "CEO", contact: "sciencex@gmail.com" },
-  { img: "", name: "김경남", hierarchy: "CEO", contact: "sciencex@gmail.com" },
-  { img: "", name: "김경남", hierarchy: "CEO", contact: "sciencex@gmail.com" },
-  { img: "", name: "김경남", hierarchy: "CEO", contact: "sciencex@gmail.com" },
-  { img: "", name: "김경남", hierarchy: "CEO", contact: "sciencex@gmail.com" },
-  { img: "", name: "김경남", hierarchy: "CEO", contact: "sciencex@gmail.com" },
-  { img: "", name: "김경남", hierarchy: "CEO", contact: "sciencex@gmail.com" },
+  { img: "", name: "김경남", hierarchy: "CEO" },
+  { img: "", name: "000", hierarchy: "CTO" },
+  { img: "", name: "하상우", hierarchy: "사내이사" },
 ];
 function generateTeamMember() {
   return teamMembers.map((item, idx) => {
     return (
       <React.Fragment key={idx}>
-        <Grid item width={"18rem"} pb={5}>
+        <Grid item width={"10rem"} pb={5}>
           <Stack alignItems={"center"}>
-            <Avatar src={item.img} sx={{ width: "8rem", height: "8rem" }} />
-            <Typography variant="h5" fontWeight={"bold"}>
+            <Avatar src={item.img} sx={{ width: "6rem", height: "6rem" }} />
+            <Typography variant="h7" fontWeight={"bold"}>
               {item.name}
             </Typography>
-            <Typography variant="h5" color={"grey"}>
+            <Typography variant="h7" color={"grey"}>
               {item.hierarchy}
             </Typography>
-            <Typography>Contact | {item.contact}</Typography>
           </Stack>
         </Grid>
       </React.Fragment>
@@ -77,41 +73,43 @@ function generateTeamMember() {
 function Info() {
   return (
     <Container>
-      <Grid container alignItems={"end"} pb={3}>
-        <Grid>
+      <Typography variant={"h3"} mb={3} fontWeight={800} align="left">
+        회사소개
+      </Typography>
+
+      <Grid container spacing={4}>
+        <Grid item xs={12} md={6}>
           <CardMedia
             component="img"
-            sx={{ maxWidth: "30rem", mb: 2 }}
+            sx={{ width: "100%", mb: 2 }}
             image={cardImg}
             alt="DEEP SCIENCE X"
           />
         </Grid>
-        <Grid pl={4} pb={4} sx={{ maxWidth: "30rem" }}>
-          <Typography variant={"h3"} mb={3} fontWeight={800}>
-            회사소개
-          </Typography>
-          <Typography variant={"h6"}>
-            상상을 현실로 만드는 딥사이언스 및 딥테크 기업에 대한 리서치 및
-            투자운용 시스템과 bank X (SaaS Workspace)를 기관투자가들에게
-            제공하는 핀테크 스타트업입니다
+        <Grid item xs={12} md={6}>
+          <Typography variant={"h6"} mb={2} marginTop={'4.5em'}>
+          상상을 현실로 만드는 딥사이언스 및 딥테크 기업에 대한 리서치 및 투자운용 시스템과 새로운 핀테크 서비스 Nova X를 기관투자가들에게 제공하는 핀테크 스타트업입니다
           </Typography>
         </Grid>
-        <Grid item xs={12}>
-          <Typography variant={"h5"} fontWeight={"bold"}>
-            위대한 아이디어를 혁신으로 투자하는 기관투자가들의 파트너
-          </Typography>
+        <Grid item xs={12} container spacing={1}>
+          <Grid item xs={6}>
+              <Typography variant={"h3"} mb={3} fontWeight={800} align="left">
+                연혁
+              </Typography>
+              <List>{generateHistory()}</List>
+          </Grid>
+
+          <Grid item xs={6}>
+            <Grid item xs={12} align={'center'}>
+              <Typography variant={"h3"} mb={3} fontWeight={800} align="left">
+                Team
+              </Typography>
+            </Grid>
+            <Grid container justifyContent={"center"} marginTop={'3em'}>
+              {generateTeamMember()}
+            </Grid>
+          </Grid>
         </Grid>
-      </Grid>
-
-      <List>{generateHistory()}</List>
-
-      <Typography mt={3} color={"primary"}>
-        Team
-      </Typography>
-      <ArrowForwardIcon color={"primary"} />
-
-      <Grid container justifyContent={"center"}>
-        {generateTeamMember()}
       </Grid>
     </Container>
   );
