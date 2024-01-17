@@ -39,6 +39,21 @@ const CompanyCard = styled.div`
   cursor: pointer;
 `;
 
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+`;
+
+const StyledButton = styled.button`
+  padding: 10px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+`;
+
 export default function CompanyDetail() {
   const { id } = useParams();
   const upperId = id.toUpperCase();
@@ -94,34 +109,41 @@ export default function CompanyDetail() {
   };
 
   return (
-    <Wrapper>
-      <h2>Bank X</h2>
-      <p>Selected Category: {selectedCategory}</p>
+    <>
+      <Wrapper>
+        <h2>Bank X</h2>
 
-      <Select onChange={handleSelectChange} value={selectedCategory}>
-        {categories.map((category) => (
-          <option key={category} value={category}>
-            {translation[category]}
-          </option>
-        ))}
-      </Select>
-
-      {companyData.data === null ? (
-        <p>정보가 존재하지 않습니다</p>
-      ) : (
-        <CompanyList>
-          {companyData?.map((company) => (
-            <CompanyCard
-              key={company.id}
-              onClick={() => handleCompanyClick(company.id)}
-            >
-              <h3>{company.name}</h3>
-              <p>Description: {company.description}</p>
-              <p>Stock Code: {company.stockCode}</p>
-            </CompanyCard>
+        <Select onChange={handleSelectChange} value={selectedCategory}>
+          {categories.map((category) => (
+            <option key={category} value={category}>
+              {translation[category]}
+            </option>
           ))}
-        </CompanyList>
-      )}
-    </Wrapper>
+        </Select>
+
+        {companyData.data === null ? (
+          <p>정보가 존재하지 않습니다</p>
+        ) : (
+          <CompanyList>
+            {companyData?.map((company) => (
+              <CompanyCard
+                key={company.id}
+                onClick={() => handleCompanyClick(company.id)}
+              >
+                <h3>{company.name}</h3>
+                <p>Description: {company.description}</p>
+                <p>Stock Code: {company.stockCode}</p>
+              </CompanyCard>
+            ))}
+          </CompanyList>
+        )}
+      </Wrapper>
+
+      <ButtonContainer>
+        <StyledButton onClick={() => navigate("/company/post")}>
+          회사 추가하기
+        </StyledButton>
+      </ButtonContainer>
+    </>
   );
 }
