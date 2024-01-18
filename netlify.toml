@@ -2,13 +2,14 @@
   command = "yarn run build"
 
 [[redirects]]
-  from = "/v2/top-headlines/*"
-  to = "https://newsapi.org/v2/top-headlines/:splat"
+  from = "/v2/*"
+  to = "https://newsapi.org/v2/:splat"
 
 [[redirects]]
-  from = "/api/company.json/*"
+  from = "/api/*"
   to = "https://opendart.fss.or.kr/api/:splat"
-
+  [header]
+    Access-Control-Allow-Origin = "*"
 
 [[redirects]]
   from = "/v1/*"
