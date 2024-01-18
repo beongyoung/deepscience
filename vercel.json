@@ -6,13 +6,13 @@
       "source": "/api/company.json",
       "destination": "https://opendart.fss.or.kr"
     },
-    { "source": "/v1/[^.]+", "destination": "https://api.updatecome.com:8081" },
-    { "source": "/v2/[^.]+", "destination": "https://newsapi.org" },
+    { "source": "/v1/(.*)", "destination": "https://api.updatecome.com:8081" },
+    { "source": "/v2/(.*)", "destination": "https://newsapi.org" },
     {
-      "source": "/deepscienceObject/[^.]+",
+      "source": "/deepscienceObject/(.*)",
       "destination": "https://ssproxy.ucloudbiz.olleh.com/v1/AUTH_2197aef3-436e-443d-a060-df0b98a86913"
     },
-    { "source": "/[^.]+", "destination": "/" }
+    { "source": "/(.*)", "destination": "/" }
   ],
   "builds": [
     {
