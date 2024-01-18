@@ -12,7 +12,6 @@ import {
   Typography,
 } from "@mui/material";
 import cardImg from "../../assets/about_deepscience.png";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 
 const history = [

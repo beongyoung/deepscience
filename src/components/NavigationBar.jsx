@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import styles from "styled-components";
-import logo from "../assets/nova_x_logo.png";
+import logo from "../assets/bankx_logo.png";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { logoutUser } from "../redux/authAction";
