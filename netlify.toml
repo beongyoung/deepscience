@@ -1,22 +1,22 @@
 [[redirects]]
+  from = '/api/company.json'
+  to = 'https://opendart.fss.or.kr/'
+  force = true
+
+[[redirects]]
   from = '/v1/*'
-  to = 'https://api.updatecome.com:8081/v1/'
+  to = 'https://api.updatecome.com:8081/'
   status = 200
   force = true
 
 [[redirects]]
   from = '/v2/top-haedlines'
-  to = 'https://newsapi.org/v2/top-haedlines/'
-  force = true
-
-[[redirects]]
-  from = '/api/company.json'
-  to = 'https://opendart.fss.or.kr/api/company.json/'
+  to = 'https://newsapi.org/'
   force = true
 
 [[redirects]]
   from = '/deepscienceObject/*'
-  to = 'https://ssproxy.ucloudbiz.olleh.com/v1/AUTH_2197aef3-436e-443d-a060-df0b98a86913/deepscienceObject/'
+  to = 'https://ssproxy.ucloudbiz.olleh.com/v1/AUTH_2197aef3-436e-443d-a060-df0b98a86913/'
   status = 200
   force = true
 
@@ -24,11 +24,6 @@
   from = '/*'
   to = '/index.html'
   status = 200
-
-[[headers]]
-  for = '/*'
-  [headers.values]
-    access-control-allow-origin = '*'
 
 [build]
   command = "yarn run build"
