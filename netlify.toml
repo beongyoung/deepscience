@@ -1,9 +1,9 @@
 [[redirects]]
-  from = "/v1/[^.]+"
+  from = "/v1/*"
   to = "https://api.updatecome.com:8081"
 
 [[redirects]]
-  from = "/v2/[^.]+"
+  from = "/v2/*"
   to = "https://newsapi.org"
 
 [[redirects]]
@@ -11,12 +11,12 @@
   to = "https://opendart.fss.or.kr"
 
 [[redirects]]
-  from = "/[^.]+"
+  from = "/*"
   to = "/index.html"
   status = 200
 
 [[redirects]]
-  from = "/deepscienceObject/[^.]+"
+  from = "/deepscienceObject/*"
   to = "https://ssproxy.ucloudbiz.olleh.com/v1/AUTH_2197aef3-436e-443d-a060-df0b98a86913"
 
 [build]
