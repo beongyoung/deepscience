@@ -1,19 +1,23 @@
-[redirects]
-    from = "/v1/[^.]+"
-    to = "https://api.updatecome.com:8081"
-[redirects]
-    from = "/v2/[^.]+"
-    to = "https://newsapi.org"
-[redirects]
-    from = "/api/company.json"
-    to = "https://opendart.fss.or.kr"
-[redirects]
-    from = "/[^.]+"
-    to = "/"
-    status = 200
-[redirects]
-    from = "/deepscienceObject/[^.]+"
-    to = "https://ssproxy.ucloudbiz.olleh.com/v1/AUTH_2197aef3-436e-443d-a060-df0b98a86913"
+[[redirects]]
+  from = "/v1/[^.]+"
+  to = "https://api.updatecome.com:8081"
+
+[[redirects]]
+  from = "/v2/[^.]+"
+  to = "https://newsapi.org"
+
+[[redirects]]
+  from = "/api/company.json"
+  to = "https://opendart.fss.or.kr"
+
+[[redirects]]
+  from = "/[^.]+"
+  to = "/"
+  status = 200
+
+[[redirects]]
+  from = "/deepscienceObject/[^.]+"
+  to = "https://ssproxy.ucloudbiz.olleh.com/v1/AUTH_2197aef3-436e-443d-a060-df0b98a86913"
 
 [build]
-    command = "npm run build"
+  command = "npm run build"
