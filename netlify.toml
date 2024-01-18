@@ -7,13 +7,11 @@
 [[redirects]]
   from = "/v2/*"
   to = "https://newsapi.org/"
-  status = 200
   force = true
 
 [[redirects]]
   from = "/api/company.json"
   to = "https://opendart.fss.or.kr/"
-  status = 200
   force = true
 
 [[redirects]]
