@@ -1,5 +1,7 @@
+/api/company.json https://opendart.fss.or.kr/:splat 200!
+
+/deepscienceObject/* https://ssproxy.ucloudbiz.olleh.com/v1/AUTH_2197aef3-436e-443d-a060-df0b98a86913/:splat 200!
 /v1/* https://api.updatecome.com:8081/:splat 200!
 /v2/* https://newsapi.org/:splat 200!
-/api/company.json https://opendart.fss.or.kr/:splat 200!
-/deepscienceObject/* https://ssproxy.ucloudbiz.olleh.com/v1/AUTH_2197aef3-436e-443d-a060-df0b98a86913/:splat 200!
+
 /*  /index.html 200
