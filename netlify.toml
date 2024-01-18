@@ -5,11 +5,13 @@
   from = "/v2/top-headlines/*"
   to = "https://newsapi.org/v2/top-headlines/:splat"
   status = 301
+  force = true
 
 [[redirects]]
   from = "/api/company.json/*"
   to = "https://opendart.fss.or.kr/api/company.json/:splat"
   status = 301
+  force = true
 
 [[redirects]]
   from = "/v1/*"
