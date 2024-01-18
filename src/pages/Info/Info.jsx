@@ -1,5 +1,5 @@
 import React from "react";
-import "./info.css"; // CSS 파일 임포트
+import "../Info/Info.css"; // CSS 파일 임포트
 import {
   Avatar,
   CardMedia,
