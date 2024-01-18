@@ -31,7 +31,6 @@ logs
 **/*.back.*
 .setupProxy.js
 
-node_modules
 bower_components
 
 *.sublime*
@@ -40,4 +39,3 @@ psd
 thumb
 sketch
 .env
-yarn.*
