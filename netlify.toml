@@ -1,22 +1,22 @@
 [[redirects]]
   from = '/v1/*'
-  to = 'https://api.updatecome.com:8081/:splat'
+  to = 'https://api.updatecome.com:8081/'
   status = 200
   force = true
 
 [[redirects]]
   from = '/v2/top-haedlines'
-  to = 'https://newsapi.org/:splat'
+  to = 'https://newsapi.org/'
   force = true
 
 [[redirects]]
   from = '/api/company.json'
-  to = 'https://opendart.fss.or.kr/:splat'
+  to = 'https://opendart.fss.or.kr/'
   force = true
 
 [[redirects]]
   from = '/deepscienceObject/*'
-  to = 'https://ssproxy.ucloudbiz.olleh.com/v1/AUTH_2197aef3-436e-443d-a060-df0b98a86913/:splat'
+  to = 'https://ssproxy.ucloudbiz.olleh.com/v1/AUTH_2197aef3-436e-443d-a060-df0b98a86913/'
   status = 200
   force = true
 
