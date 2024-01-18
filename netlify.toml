@@ -1,22 +1,26 @@
 [[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[redirects]]
   from = "/v1/*"
-  to = "https://api.updatecome.com:8081"
+  to = "https://api.updatecome.com:8081:splat"
+  status = 200
   force = true
 
 [[redirects]]
   from = "/v2/*"
-  to = "https://newsapi.org"
+  to = "https://newsapi.org:splat"
+  status = 200
   force = true
 
 [[redirects]]
   from = "/api/company.json"
-  to = "https://opendart.fss.or.kr"
+  to = "https://opendart.fss.or.kr:splat"
+  status = 200
   force = true
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
 
 [[redirects]]
   from = "/deepscienceObject/*"
