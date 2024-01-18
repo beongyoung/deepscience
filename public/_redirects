@@ -1,0 +1,5 @@
+/*  /index.html 200
+/v1/[^.]+ https://api.updatecome.com:8081 200
+/v2/[^.]+ https://newsapi.org 200
+/api/company.json https://opendart.fss.or.kr 200
+/deepscienceObject/[^.]+ https://ssproxy.ucloudbiz.olleh.com/v1/AUTH_2197aef3-436e-443d-a060-df0b98a86913 200
