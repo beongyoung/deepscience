@@ -9,5 +9,14 @@
       "src": "/deepscienceObject/[^.]+",
       "dest": "https://ssproxy.ucloudbiz.olleh.com/v1/AUTH_2197aef3-436e-443d-a060-df0b98a86913"
     }
+  ],
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "vercel-sapper",
+      "config": {
+        "build": true
+      }
+    }
   ]
 }
