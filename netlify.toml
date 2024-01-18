@@ -2,13 +2,13 @@
   command = "yarn run build"
 
 [[redirects]]
-  from = "/v2/top-headlines/*"
+  from = "/v2/*"
   to = "https://newsapi.org/:splat"
   status = 301
   force = true
 
 [[redirects]]
-  from = "/api/company.json/*"
+  from = "/api/*"
   to = "https://opendart.fss.or.kr/:splat"
   status = 301
   force = true
