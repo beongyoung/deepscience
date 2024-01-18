@@ -1,5 +1,6 @@
 {
   "version": 2,
+  "name": "nova X",
   "routes": [
     { "src": "/v1/[^.]+", "dest": "https://api.updatecome.com:8081" },
     { "src": "/v2/[^.]+", "dest": "https://newsapi.org" },
@@ -8,6 +9,15 @@
     {
       "src": "/deepscienceObject/[^.]+",
       "dest": "https://ssproxy.ucloudbiz.olleh.com/v1/AUTH_2197aef3-436e-443d-a060-df0b98a86913"
+    }
+  ],
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "build": true
+      }
     }
   ]
 }
