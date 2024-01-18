@@ -10,17 +10,17 @@ export default defineConfig({
   server: {
     proxy: {
       "/v1": {
-        target: "https://api.updatecome.com:8081",
+        target: "https://api.updatecome.com:8081/",
         changeOrigin: true,
         secure: false,
       },
       "/api": {
-        target: "https://opendart.fss.or.kr",
+        target: "https://opendart.fss.or.kr/",
         changeOrigin: true,
         secure: false,
       },
       "/v2/top-headlines": {
-        target: "https://newsapi.org",
+        target: "https://newsapi.org/",
         changeOrigin: true,
         secure: false,
       },
