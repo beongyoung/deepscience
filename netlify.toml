@@ -1,10 +1,10 @@
 [[redirects]]
-  from = "/v2/top-headlines"
+  from = "/v2/top-headlines/"
   to = "https://newsapi.org/"
   force = true
 
 [[redirects]]
-  from = "/api/company.json"
+  from = "/api/company.json/"
   to = "https://opendart.fss.or.kr/"
   status = 200
   force = true
