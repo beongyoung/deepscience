@@ -2,23 +2,26 @@
   from = "/*"
   to = "/index.html"
   status = 200
-  
+
 [[redirects]]
   from = "/v1/*"
   to = "https://api.updatecome.com:8081"
+  force = true
 
 [[redirects]]
   from = "/v2/*"
   to = "https://newsapi.org"
+  force = true
 
 [[redirects]]
   from = "/api/company.json"
   to = "https://opendart.fss.or.kr"
-
+  force = true
 
 [[redirects]]
   from = "/deepscienceObject/*"
   to = "https://ssproxy.ucloudbiz.olleh.com/v1/AUTH_2197aef3-436e-443d-a060-df0b98a86913"
+  force = true
 
 [build]
-  command = "npm run build"
+  command = "yarn build"
