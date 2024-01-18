@@ -1,5 +1,5 @@
 import React from "react";
-import './info.css'; // CSS 파일 임포트
+import styled from "styled-components";
 import {
   Avatar,
   CardMedia,
@@ -7,13 +7,61 @@ import {
   Grid,
   List,
   ListItem,
-  ListItemText,
-  Stack,
   Typography,
+  Stack,
+  ListItemText,
 } from "@mui/material";
-import cardImg from "../../assets/about_deepscience.png";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
+import cardImg from "../../assets/about_deepscience.png";
+
+// Styled Components
+const StyledContainer = styled(Container)`
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+
+  @media screen and (max-width: 768px) {
+    padding: 10px;
+  }
+`;
+
+const Title = styled(Typography)`
+  color: #123456;
+  margin-bottom: 20px;
+`;
+
+const StyledCardMedia = styled(CardMedia)`
+  border-radius: 5px;
+  overflow: hidden;
+`;
+
+const HistoryList = styled(List)`
+  .history-item {
+    margin-bottom: 15px;
+  }
+`;
+
+const TeamContainer = styled(Grid)`
+  .team-item {
+    margin-bottom: 15px;
+  }
+
+  .team-avatar {
+    width: 80px;
+    height: 80px;
+    border: 2px solid #123456;
+  }
+
+  .team-name {
+    font-weight: bold;
+  }
+
+  .team-position {
+    color: #555;
+  }
+`;
+
+// Data
 
 const history = [
   `DeepScience X 2023년 7월 설립`,
@@ -28,19 +76,7 @@ const history = [
 function generateHistory() {
   return history.map((value, idx) => (
     <ListItem key={idx} disablePadding>
-      {idx === 0 ? (
-        <ListItemText
-          primary={
-            <Typography variant={"h6"}>
-              {value}
-            </Typography>
-          }
-        />
-      ) : (
-        <ListItemText
-          primary={<Typography variant={"h6"}>{value}</Typography>}
-        />
-      )}
+      <ListItemText primary={<Typography variant={"h6"}>{value}</Typography>} />
     </ListItem>
   ));
 }
@@ -70,16 +106,16 @@ function generateTeamMember() {
   });
 }
 
-function Info() {
+const Info = () => {
   return (
-    <Container>
-      <Typography variant={"h3"} mb={3} fontWeight={800} align="left">
+    <StyledContainer>
+      <Title variant={"h3"} mb={3} fontWeight={800} align="left">
         회사소개
-      </Typography>
+      </Title>
 
       <Grid container spacing={4}>
         <Grid item xs={12} md={6}>
-          <CardMedia
+          <StyledCardMedia
             component="img"
             sx={{ width: "100%", mb: 2 }}
             image={cardImg}
@@ -87,32 +123,32 @@ function Info() {
           />
         </Grid>
         <Grid item xs={12} md={6}>
-          <Typography variant={"h6"} mb={2} marginTop={'4.5em'}>
-          상상을 현실로 만드는 딥사이언스 및 딥테크 기업에 대한 리서치 및 투자운용 시스템과 새로운 핀테크 서비스 Nova X를 기관투자가들에게 제공하는 핀테크 스타트업입니다
+          <Typography variant={"h6"} mb={2} marginTop={"4.5em"}>
+            상상을 현실로 만드는 딥사이언스 및 딥테크 기업에 대한 리서치 및
+            투자운용 시스템과 새로운 핀테크 서비스 Nova X를 기관투자가들에게
+            제공하는 핀테크 스타트업입니다
           </Typography>
         </Grid>
         <Grid item xs={12} container spacing={1}>
           <Grid item xs={6}>
-              <Typography variant={"h3"} mb={3} fontWeight={800} align="left">
-                연혁
-              </Typography>
-              <List>{generateHistory()}</List>
+            <Title variant={"h3"} mb={3} fontWeight={800} align="left">
+              연혁
+            </Title>
+            <HistoryList>{generateHistory()}</HistoryList>
           </Grid>
 
-          <Grid item xs={6}>
-            <Grid item xs={12} align={'center'}>
-              <Typography variant={"h3"} mb={3} fontWeight={800} align="left">
-                Team
-              </Typography>
-            </Grid>
-            <Grid container justifyContent={"center"} marginTop={'3em'}>
+          <TeamContainer item xs={6} align={"center"}>
+            <Title variant={"h3"} mb={3} fontWeight={800} align="left">
+              Team
+            </Title>
+            <Grid container justifyContent={"center"} marginTop={"3em"}>
               {generateTeamMember()}
             </Grid>
-          </Grid>
+          </TeamContainer>
         </Grid>
       </Grid>
-    </Container>
+    </StyledContainer>
   );
-}
+};
 
 export default Info;
