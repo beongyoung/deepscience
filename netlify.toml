@@ -16,6 +16,6 @@
     to = "https://ssproxy.ucloudbiz.olleh.com/v1/AUTH_2197aef3-436e-443d-a060-df0b98a86913"
 
 [[build]]
-    command = "yarn build"
+    command = "npm run build"
     functions = "functions"
     publish = "public"
