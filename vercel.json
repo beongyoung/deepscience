@@ -13,7 +13,7 @@
   "builds": [
     {
       "src": "package.json",
-      "use": "@now/static-build",
+      "use": "@vercel/static-build",
       "config": {
         "build": true
       }
