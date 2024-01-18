@@ -1,31 +1,30 @@
 [[redirects]]
   from = "/v1/*"
-  to = "https://api.updatecome.com:8081:splat"
+  to = "https://api.updatecome.com:8081/:splat"
   status = 200
   force = true
 
 [[redirects]]
   from = "/v2/*"
-  to = "https://newsapi.org:splat"
+  to = "https://newsapi.org/:splat"
   status = 200
   force = true
 
 [[redirects]]
   from = "/api/company.json"
-  to = "https://opendart.fss.or.kr:splat"
+  to = "https://opendart.fss.or.kr/:splat"
   status = 200
   force = true
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
 
 [[redirects]]
   from = "/deepscienceObject/*"
-  to = "https://ssproxy.ucloudbiz.olleh.com/v1/AUTH_2197aef3-436e-443d-a060-df0b98a86913"
+  to = "https://ssproxy.ucloudbiz.olleh.com/v1/AUTH_2197aef3-436e-443d-a060-df0b98a86913/:splat"
   force = true
+
+[[redirects]]
+  from = "/"
+  to = "/index.html"
+  status = 200
 
 [build]
   command = "yarn build"
