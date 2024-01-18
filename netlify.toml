@@ -5,8 +5,8 @@
   force = true
 
 [[redirects]]
-  from = "/api/*"
-  to = "https://opendart.fss.or.kr/api:splat"
+  from = "/api/company.json/*"
+  to = "https://opendart.fss.or.kr/api/company.json:splat"
   status = 301
   force = true
 
