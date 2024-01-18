@@ -1,3 +1,6 @@
+[build]
+  command = "yarn run build"
+
 [[redirects]]
   from = "/v2/top-headlines/*"
   to = "https://newsapi.org/v2/top-headlines/:splat"
@@ -24,6 +27,3 @@
   from = "/*"
   to = "/index.html"
   status = 200
-
-[build]
-  command = "yarn run build"
