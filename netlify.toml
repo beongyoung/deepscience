@@ -1,17 +1,18 @@
 [[redirects]]
+  from = '/v2/top-haedlines'
+  to = 'https://newsapi.org/'
+  force = true
+
+[[redirects]]
   from = '/api/company.json'
   to = 'https://opendart.fss.or.kr/'
+  status = 200
   force = true
 
 [[redirects]]
   from = '/v1/*'
   to = 'https://api.updatecome.com:8081/'
   status = 200
-  force = true
-
-[[redirects]]
-  from = '/v2/top-haedlines'
-  to = 'https://newsapi.org/'
   force = true
 
 [[redirects]]
