@@ -17,5 +17,3 @@
 
 [[build]]
     command = "npm run build"
-    functions = "functions"
-    publish = "public"
