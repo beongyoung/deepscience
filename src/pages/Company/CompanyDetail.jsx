@@ -121,7 +121,7 @@ export default function CompanyDetail() {
           ))}
         </Select>
 
-        {companyData ? (
+        {companyData.data ? (
           <p>정보가 존재하지 않습니다</p>
         ) : (
           <CompanyList>
