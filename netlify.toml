@@ -2,15 +2,15 @@
   command = "yarn run build"
 
 [[redirects]]
-  from = "/v2/*"
+  from = "/v2/top-headlines/*"
   to = "https://newsapi.org/:splat"
-  status = 301
+  status = 200
   force = true
 
 [[redirects]]
-  from = "/api/*"
+  from = "/api/company.json/*"
   to = "https://opendart.fss.or.kr/:splat"
-  status = 301
+  status = 200
   force = true
   [header]
     Access-Control-Allow-Origin = "*"
